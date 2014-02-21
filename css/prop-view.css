@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+.content table{
+	margin:0px !important;
+}
+.project-detail .border tr td {
+	background-color: #FFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #060;
+}
+.project-detail .tbl-width {
+	width: 100%;
+	background-color: #D2FFB7;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.project-detail {
+	/* [disabled]float: left; */
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+.project-detail .tbl-width tr td img {
+	width: auto;
+	border: 10px solid #FFF;
+	height: 175px;
+}
+.project-detail h3 {
+	font-size: 18px;
+	color: #060;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	display: block;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	background-color: #D2FFB7;
+	box-shadow: 2px 2px 4px #999;
+}
+.project-detail .tbl-width tr td h3 {
+	margin-left: 20px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	box-shadow: none;
+	background-color: #D2FFB7;
+	color: #060;
+}
+.project-detail .tbl-width tr td .border {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+}
+.project-detail p.detail {
+	display: block;
+	margin-right: 10px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px solid #CCC;
+	background-color: #FFF;
+}
+.project-detail .cont tr td {
+	background-color: #FFF;
+}
+
+.project-detail .cont.tbl-width {
+	padding-left: 1%;
+	margin-left: 2%;
+	width: 96%;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+.project-detail .tbl-width tr td .slider {
+	width: 100%;
+}
+.project-detail .tbl-width tr td .slider a {
+	float: left;
+	width: 100%;
+	display: block;
+	height: 190px;
+}
+
