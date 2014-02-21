@@ -29,8 +29,8 @@ class RealEstateModelDefault extends JModelItem
 				$option['driver']   = 'mysql';            // Database driver name
 				$option['host']     = 'localhost';    // Database host name
 				$option['user']     = 'root';       // User for database authentication
-				$option['password'] = 'root';   // Password for database authentication
-				$option['database'] = 'prop';      // Database name
+				$option['password'] = '';   // Password for database authentication
+				$option['database'] = 'test';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
@@ -68,5 +68,46 @@ class RealEstateModelDefault extends JModelItem
 		//$result; //$result[2];
 		return $result;
 	}
+
+//********************************* Search Module ******************
+	public function searchQuery($search="")
+
+	{		 
+
+		$db = $this->getDbo();
+
+		$query = $db->getQuery(true);
+		
+
+		//$searchArray = $search;//explode(" ", $search);
+
+		//$description = "";
+		//$name = "";
+		//foreach($searchArray AS $s)
+		//{
+			$type = "`category` LIKE '%".mysql_real_escape_string($_POST['type'])."%'";
+			$property_for = "`property_for` LIKE '%".mysql_real_escape_string($_POST['property_for'])."%'";
+			$city = "`city` LIKE '%".mysql_real_escape_string($_POST['city'])."%'";
+			$price = "`price` LIKE '%".mysql_real_escape_string($_POST['price'])."%'";
+		//}
+		
+		
+		//$query = "SELECT * FROM `users` WHERE ($description) OR ($name)";
+
+		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type)" ;
+
+		$db->setQuery($query);
+
+		$result = $db->loadAssocList();//loadRowList(); //loadRow();
+		
+		echo $query;
+
+		//$result; //$result[2];
+
+		return $result;
+
+	}
+
+
 	
 }

@@ -47,7 +47,40 @@ class RealEstateViewDefault extends JViewLegacy
 				 return false;
 			 }
 //here else statement		 
+		}elseif($this->getLayout()=='search'){
+			
+			//$srch = $_POST['search'];
+			//echo $srch[1];
+			//$this->searchResult = $model->searchQuery();
+
+			$result = $model->searchQuery();
+	
+			$this->property = $result;
+
+			
+			 $this->msg = array();
+			 for($s=0;$s<count($this->property);$s++)
+			 {
+				 $this->msg[$s]->greeting = $this->property[$s];
+			 }
+			 $total = count($this->msg);
+			 if (JRequest::getVar('limit') > 0) {
+			 $this->msg	= array_splice($this->msg, JRequest::getVar('limitstart'), JRequest::getVar('limit'));
+			 }
+		 
+			 jimport('joomla.html.pagination');
+			 $this->_pagination = new JPagination($total, JRequest::getVar('limitstart'), JRequest::getVar('limit') );
+			 
+			 $this->items = $this->msg;
+			 $this->pagination = $this->_pagination;
+	
+			 JRequest::setVar('limit', JRequest::getVar('limit', 5, '', 'int'));
+			 JRequest::setVar('limitstart', JRequest::getVar('limitstart', 0, '', 'int'));
+			 
+
+			
 		}else{
+
 			//Get property id from url parameter like $_GET
 			$id = JRequest::getVar('id');
 			$email = JRequest::getVar('email');

@@ -29,8 +29,8 @@ class RealEstateModelProject extends JModelItem
 				$option['driver']   = 'mysql';            // Database driver name
 				$option['host']     = 'localhost';    // Database host name
 				$option['user']     = 'root';       // User for database authentication
-				$option['password'] = 'root';   // Password for database authentication
-				$option['database'] = 'prop';      // Database name
+				$option['password'] = '';   // Password for database authentication
+				$option['database'] = 'test';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
