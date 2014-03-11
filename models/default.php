@@ -20,7 +20,7 @@ class RealEstateModelDefault extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = '169.254.182.25';    // Database host name
+				$option['host']     = 'localhost';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
 				$option['database'] = 'prop';      // Database name
@@ -46,7 +46,8 @@ class RealEstateModelDefault extends JModelItem
 			$dbCat = " AND category = '$category' ";
 		}else{ $dbCat = "" ; }
 		
-		$query = "SELECT * From `2_real_property` WHERE status='1' $dblimit $dbCat";
+		$query = "SELECT * From `2_real_property` WHERE status='1' $dblimit $dbCat AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'";
+		echo $query;
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
@@ -58,7 +59,7 @@ class RealEstateModelDefault extends JModelItem
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 		
-		$query = "SELECT * From `2_real_property` WHERE status='1' GROUP BY category";
+		$query = "SELECT * From `2_real_property` WHERE status='1' AND other_domain LIKE '%$_SERVER[HTTP_HOST]%' GROUP BY category";
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
@@ -71,7 +72,7 @@ class RealEstateModelDefault extends JModelItem
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 		
-		$query = "SELECT * From `2_real_property` WHERE status='1'  AND featured = '1' ";
+		$query = "SELECT * From `2_real_property` WHERE status='1'  AND featured = '1'  AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'";
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
@@ -103,7 +104,7 @@ class RealEstateModelDefault extends JModelItem
 		
 		//$query = "SELECT * FROM `users` WHERE ($description) OR ($name)";
 
-		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type)" ;
+		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type)  AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'" ;
 
 		$db->setQuery($query);
 

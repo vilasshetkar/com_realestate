@@ -98,6 +98,7 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
         </div>
 
 <?php endforeach; ?>
+<?php echo $this->pagination->getListFooter(); ?>
 
 </form>
 
