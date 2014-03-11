@@ -11,7 +11,7 @@ jimport('joomla.application.component.model');
  * @subpackage  com_content
  * @since       1.5
  */
-class RealEstateModelDefault extends JModelItem
+class RealEstateModelManage extends JModelItem
 {
 	public function __construct($config = array())
          {
@@ -35,88 +35,38 @@ class RealEstateModelDefault extends JModelItem
                 parent::setDbo($db);
          }
 
-	public function getMsg($limit=null,$category=null)
+	public function addProperty()
 	{		 
 		$db = $this->getDbo();
-		$query = $db->getQuery(true);
-		if(!$limit == null){
-			$dblimit = " AND id=$limit";
-		}else{ $dblimit = "" ; }
-		if(!$category == null){
-			$dbCat = " AND category = '$category' ";
-		}else{ $dbCat = "" ; }
-		
-		$query = "SELECT * From `2_real_property` WHERE status='1' $dblimit $dbCat";
-		$db->setQuery($query);
-		$result = $db->loadAssocList();//loadRowList(); //loadRow();
-		//$result; //$result[2];
-		return $result;
-	}
 
-	public function getCategory()
-	{		 
-		$db = $this->getDbo();
 		$query = $db->getQuery(true);
-		
-		$query = "SELECT * From `2_real_property` WHERE status='1' GROUP BY category";
+
+		$query = "INSERT INTO `2_real_property` (`user_id`, `featured`, `property_for`, `category`, `type`, `buildup_area`, `build_unit`, `land_area`, `land_unit`, `carpet_area`, `carpet_unit`, `price`, `currency`, `bedrooms`, `bathrooms`, `country`, `state`, `city`, `address`, `location`, `title`, `society_name`, `prop_desc`, `cont_name`, `contact`, `email`, `cont_address`, `prop_age`, `furnished`, `transaction_type`, `prop_owner`, `floors`, `on_floor`, `parking`, `hospital`, `airport`, `railway`, `school`, `power`, `water`, `lift`, `res_parking`, `security`, `maintenance`, `gym`, `park`, `tarrace`, `swimming`, `quarters`, `club`, `facing`, domain, meta_desc, meta_key) VALUES ('$_POST[user_id]', '$_POST[featured]', '$_POST[property_for]', '$_POST[category]', '$_POST[type]', '$_POST[build_area]', '$_POST[build_unit]', '$_POST[land_area]', '$_POST[land_unit]', '$_POST[carpet_area]', '$_POST[carpet_unit]', '$_POST[price]', '$_POST[currency]', '$_POST[bedrooms]', '$_POST[bathrooms]', '$_POST[country]', '$_POST[state]', '$_POST[city]', '$_POST[address]', '$_POST[location]', '$_POST[title]', '$_POST[society_name]', '$_POST[prop_desc]', '$_POST[cont_name]', '$_POST[contact_no]', '$_POST[email]', '$_POST[cont_address]', '$_POST[prop_age]', '$_POST[furnished]', '$_POST[transaction_type]', '$_POST[prop_owner]', '$_POST[floors]', '$_POST[on_floor]', '$_POST[parking]', '$_POST[hospital]', '$_POST[airport]', '$_POST[railway]', '$_POST[school]', '$_POST[power]', '$_POST[water]', '$_POST[lift]', '$_POST[res_parking]', '$_POST[security]', '$_POST[maintenance]', '$_POST[gym]', '$_POST[park]', '$_POST[tarrace]', '$_POST[swimming]', '$_POST[quarters]', '$_POST[club]', '$_POST[facing]','$_SERVER[HTTP_HOST]','$_POST[meta_desc]','$_POST[meta_key]');";
+
 		$db->setQuery($query);
-		$result = $db->loadAssocList();//loadRowList(); //loadRow();
-		//$result; //$result[2];
+		$db->query();
+
+		$result = JFactory::getApplication()->enqueueMessage('Property Added Successfully','message');
+
 		return $result;
 	}
 
 
-	public function FeaturedProp()
+public function viewProperty()
 	{		 
-		$db = $this->getDbo();
-		$query = $db->getQuery(true);
-		
-		$query = "SELECT * From `2_real_property` WHERE status='1'  AND featured = '1' ";
-		$db->setQuery($query);
-		$result = $db->loadAssocList();//loadRowList(); //loadRow();
-		//$result; //$result[2];
-		return $result;
-	}
-
-//********************************* Search Module ******************
-	public function searchQuery($search="")
-
-	{		 
-
 		$db = $this->getDbo();
 
 		$query = $db->getQuery(true);
-		
 
-		//$searchArray = $search;//explode(" ", $search);
-
-		//$description = "";
-		//$name = "";
-		//foreach($searchArray AS $s)
-		//{
-			$type = "`category` LIKE '%".mysql_real_escape_string($_POST['type'])."%'";
-			$property_for = "`property_for` LIKE '%".mysql_real_escape_string($_POST['property_for'])."%'";
-			$city = "`city` LIKE '%".mysql_real_escape_string($_POST['city'])."%'";
-			$price = "`price` LIKE '%".mysql_real_escape_string($_POST['price'])."%'";
-		//}
-		
-		
-		//$query = "SELECT * FROM `users` WHERE ($description) OR ($name)";
-
-		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type)" ;
+		$query = "SELECT * FROM `2_real_property` ORDER BY `status` DESC";
 
 		$db->setQuery($query);
-
-		$result = $db->loadAssocList();//loadRowList(); //loadRow();
-		
-
-		//$result; //$result[2];
+		$result = $db->loadAssocList();// load accociate array
 
 		return $result;
-
 	}
-	
-	
+
+
 	public function sendMail(){
 		$mailer = JFactory::getMailer();
 		$config = JFactory::getConfig();

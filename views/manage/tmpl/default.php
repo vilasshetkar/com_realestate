@@ -15,23 +15,30 @@ $document->addScriptDeclaration('
     });
 ');
 ?>
-
- 
  
 <form action="<?php echo JRoute::_('index.php?option=com_realestate'); ?>" method="post">
-<h2>Search Result</h2>
 <table>
 <thead>
+<tr>
+<th><h1>Property View</h1></th>
+</tr>
+</thead>
+<tfoot>
 <tr>
 <td><div class="pagination"><?php echo $this->pagination->getListFooter(); ?></div>
 <div class="clear"></div></td>
 </tr>
-</thead>
-<tfoot>
 </tfoot>
 <tbody>
-		 <?php foreach($this->items as $i => $item): ?>
+<?php foreach($this->category as $i => $item):
+$propCategory = JRoute::_( "index.php?view=Default&layout=default&category=".$item['category'] ); 
 
+?>
+<a class="btn btn-primary" href="<?php echo $propCategory ?>" title=""><?php echo $item['category']; ?></a><div class="divider-vertical pull-left"></div>
+<?php endforeach; ?>
+
+
+<?php foreach($this->items as $i => $item): ?>
 <tr class="row<?php echo $i % 2; ?>">
 <td>
 <?php 

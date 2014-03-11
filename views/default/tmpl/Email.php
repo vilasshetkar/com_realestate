@@ -9,7 +9,8 @@ JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/prop-view.css');
 JHtml::stylesheet(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextField.css');
 JHtml::stylesheet(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextarea.css');
 $document = JFactory::getDocument();
- 
+
+
 ?>
 <?php 
 // Add Javascript directly here
@@ -27,82 +28,101 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 ');
 ?>
 <?php 
-if (isset($_POST['submit'])=='Submit'){
-$respo_for='web';
+/*if (isset($_POST['submit'])=='Submit'){
 $subject='Website Enquiry';
 
 $to = 'vilasshetkar@gmail.com' ;//$_SESSION['email'] ;
-$from = 'website_url' ;
+$from = $_POST['email'] ;
 $msg_subject = $subject ;
-$message =  'This is system generated mail: \r\n
-			From : '.$_POST['email'].'\r\n
-			Full Name : '.$_POST['first_name'].' '.$_POST['last_name'].' \r\n
+$message =  "This is system generated mail: \r\n
+			From : $_POST[email] \r\n
+			Full Name : $_POST[first_name]"." "."$_POST[last_name] \r\n
 			Company : $_POST[company] \r\n
 			Phone : $_POST[phone] \r\n \r\n \r\n
 			Message : \r\n
-			$_POST[message]' ;
+			$_POST[message]" ;
 $headers = 'From: '.$from."\r\n" .
     'X-Mailer: PHP/' . phpversion();
-$send_mail = mail($to,$msg_subject,$message,$headers) or die();
+$send_mail = mail($to,$msg_subject,$message,$headers);
 $thank="<form><h1 align='center'>Thank you! We will contact you soon!</h1></form>";
 echo $thank;
-		}
+		}*/
 ?>
+<?php foreach($this->property as $i => $row): ?>
+
 <?php if (!isset($thank)){ ?>
-<div class="content">
-  <form action="" method="post" name="form1" class="enquiry" id="form1">
-    <h1>Send Enquiry:</h1>
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="5">
+
+    
+  <form action="" method="post" name="form1" role="form" class="form-horizontal" id="form1">
+ <fieldset>
+    <legend>Enquiry Form </legend>
+    <table>
       <tr>
-        <td><span id="sprytextfield1">
-          First Name
-          <input type="text" name="first_name" id="first_name" />
-        <span class="textfieldRequiredMsg">A value is require</span></span></td>
+        <td><div class="form-group">
+          <label for="first_name" class="col-sm-2 control-label">First Name</label></td>
+          </div>
+        <td><div class="col-sm-10">
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+          </div></td>
       </tr>
       <tr>
-        <td><span id="sprytextfield2">
-          Last Name 
-          <input type="text" name="last_name" id="last_name" />
-        <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+        <td><div class="form-group">
+            <label for="last_name" class="col-sm-2 control-label">Last Name</label>
+          </div></td>
+        <td><div class="col-sm-10">
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+          </div></td>
       </tr>
       <tr>
-        <td><span id="sprytextfield3">
-          Email ID
-          <input type="text" name="email" id="email" />
-        <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Please provide a valid email id.</span></span></td>
+        <td><div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+          </div></td>
+        <td><div class="col-sm-10">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+          </div></td>
       </tr>
       <tr>
-        <td><span id="sprytextfield4">
-          Mobile No.
-          <input type="text" name="phone" id="phone" />
-        <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Please provide 10 digit mobile no.</span></span></td>
+        <td><div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Mobile</label>
+          </div></td>
+        <td><div class="col-sm-10">
+            <input type="number" class="form-control" id="phone" name="phone" placeholder="Mobile">
+          </div></td>
       </tr>
       <tr>
-        <td>Company Name<span id="sprytextfield6">
-          <input type="text" name="company" id="company" />
-        </span></td>
+        <td><div class="form-group">
+            <label for="company" class="col-sm-2 control-label">Company Name</label>
+          </div></td>
+        <td><div class="col-sm-10">
+            <input type="text" class="form-control" id="company" name="company" placeholder="Company Name">
+          </div></td>
       </tr>
       <tr>
-        <td><span id="sprytextfield5">
-          Address
-          <input type="text" name="address" id="address" />
-        <span class="textfieldRequiredMsg">A value is required.</span></span></td>
+        <td><div class="form-group">
+            <label for="address" class="col-sm-2 control-label">Address</label>
+          </div></td>
+        <td><div class="col-sm-10">
+            <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+          </div></td>
       </tr>
       <tr>
-        <td><span id="sprytextarea1">
-          Message
-          <textarea name="message" id="message" cols="45" rows="3"></textarea>
-        Characters left <span id="countsprytextarea1"></span><span class="textareaMaxCharsMsg">Exceeded maximum number of characters.</span></span></td>
+        <td><label for="message" class="col-sm-2 control-label">Message</label></td>
+        <td><textarea class="form-control" rows="3" id="message" name="message"></textarea></td>
       </tr>
       <tr>
-        <td valign="middle">
-          <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $respo_for; ?>" />
-          <input name="subject" type="hidden" id="subject" value="<?php echo $subject; ?>" />
-        <input type="submit" name="submit" id="submit" value="Send Enquiry" /></td>
+        <td></td>
+        <td><div class="form-signin">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-large btn-primary" name="submit" id="submit" value="Send Enquiry" type="submit">Send Enquiry</button>
+            </div>
+          </div></td>
       </tr>
     </table>
+  </fieldset>
+      <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $row['title']?>" />
+      <input name="prop_id" type="hidden" id="prop_id" value="<?php echo $row['id']?>" />
+     
+ 
   </form>
-</div>
 <?php } ?>
-
-
+<?php endforeach; ?>

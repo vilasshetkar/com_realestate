@@ -27,10 +27,10 @@ class RealEstateModelProject extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = 'localhost';    // Database host name
-				$option['user']     = 'root';       // User for database authentication
-				$option['password'] = '';   // Password for database authentication
-				$option['database'] = 'test';      // Database name
+				$option['host']     = '169.254.182.25';    // Database host name
+				$option['user']     = 'yogesh';       // User for database authentication
+				$option['password'] = 'root';   // Password for database authentication
+				$option['database'] = 'prop';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
@@ -50,10 +50,12 @@ class RealEstateModelProject extends JModelItem
 			$dblimit = " AND id=$limit";
 		}else{ $dblimit = "" ; }
 		
-		$query = "SELECT * From `2_real_project` WHERE status='1' $dblimit";
+		$query = "SELECT * From `2_real_project` WHERE status='1' $dblimit AND `domain` LIKE '%$_SERVER[HTTP_HOST]%' ";
+		echo $query;
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
+		
 		return $result;
 	}
 
