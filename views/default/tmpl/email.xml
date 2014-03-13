@@ -3,4 +3,6 @@
         <layout title="Send Enquiry"  option="default">
                 <message>Send Enquiry by Mail</message>
         </layout>
+
+	
 </metadata>

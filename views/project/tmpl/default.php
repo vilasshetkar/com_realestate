@@ -12,69 +12,58 @@
 // no direct access
 defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
-JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.bxSlider.min.js');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/style.css');
+JHtml::_('behavior.modal');
+
 $document = JFactory::getDocument();
  
 // Add Javascript directly here
 $document->addScriptDeclaration('
 
     $(document).ready(function(){
-		$("a").click(function(){
-			//alert("An inline JavaScript Declaration");
-		});
+
     });
 ');
 ?>
 
 
-<div class="featured_project">
-<ul>
+<div class="row-fluid featured_project">
 
 		 <?php foreach($this->items as $i => $item): ?>
 <?php 
-$link = JRoute::_( "index.php?view=project&layout=SingleProject&id=".$item->greeting['id'] ); 
+$linkModal = JRoute::_( "index.php?view=project&layout=SingleProject&id=".$item->greeting['id']); 
+$link = JRoute::_( "index.php?view=project&layout=SingleProject&id=".$item->greeting['id']); 
 $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']  );
 $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greeting['id']  );
 ?>
-<li>
-          <div class="project_box">
-            <table height="76" border="0" cellpadding="0" cellspacing="0">
+
+<div class="well span4 pull-left ">
+<h3 class="page-header">
+	<a href="<?php echo $link ; ?>" rel="{size: {x: 700, y: 480}}">
+		<?php echo $item->greeting['title'];?>
+	</a>
+</h3>
+	<a href="<?php echo $link ; ?>" rel="{size: {x: 700, y: 480}}">
+		<img class="img-polaroid" src="<?php echo $item->greeting['proj_img'];?>" />
+	</a>
+    <div>
+<table class="table table-hover">
               <tr>
-                <td width="146" scope="col"><h1>
-	              <a class="fancybox" href="<?php echo $link ; ?>">
-					<?php echo $item->greeting['title'];?>
-        	      </a>
-				</h1></td>
+                <td class="span5"><strong>Location:</strong></td>
+                <td class="span7"><?php echo $item->greeting['location'];?></td>
               </tr>
               <tr>
-                <td align="center" scope="col">
-                  <a class="fancybox" href="<?php echo $link ; ?>">
-                  <img src="<?php echo $item->greeting['proj_img'];?>" />
-                  </a>
-                </td>
-              </tr>
-            </table>
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td width="77" align="left" valign="top" scope="col"><strong>Location:</strong></td>
-                <td width="147" align="left" valign="top" scope="col"><?php echo $item->greeting['location'];?></td>
-              </tr>
-              <tr>
-                <td align="left" valign="top"><strong>Type:</strong></td>
-                <td align="left" valign="top"><?php echo $item->greeting['type'];?></td>
-              </tr>
-              <tr>
-                <td colspan="2" align="left" valign="top"><a href="<?php echo $link ; ?>">More Details</a> <strong>›</strong></td>
+                <td class="span5"><strong>Type:</strong></td>
+                <td class="span7"><?php echo $item->greeting['type'];?></td>
               </tr>
             </table>
-          </div>
-</li>
-<?php endforeach; ?>
-<div class="clear"></div>
-</ul>
+   </div>
+    <div class="modal-footer">
+    <a href="<?php echo $link ; ?>" >More Details</a> <strong>›</strong>
+    </div>
 </div>
+<?php endforeach; ?>
+<div class="clearfix"></div>
 <div class="pagination"><?php echo $this->pagination->getListFooter(); ?></div>
-<div class="clear"></div>
+</div>
  
 

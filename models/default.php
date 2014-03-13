@@ -4,13 +4,7 @@
 defined('_JEXEC') or die;
 jimport('joomla.application.component.model');
 
-/**
- * Content Component Archive Model
- *
- * @package     Joomla.Site
- * @subpackage  com_content
- * @since       1.5
- */
+
 class RealEstateModelDefault extends JModelItem
 {
 	public function __construct($config = array())
@@ -20,7 +14,7 @@ class RealEstateModelDefault extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = '169.254.182.25';    // Database host name 169.254.182.25
+				$option['host']     = 'localhost';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
 				$option['database'] = 'prop';      // Database name
@@ -47,7 +41,6 @@ class RealEstateModelDefault extends JModelItem
 		}else{ $dbCat = "" ; }
 		
 		$query = "SELECT * From `2_real_property` WHERE status='1' $dblimit $dbCat AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'";
-		echo $query;
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
@@ -139,9 +132,11 @@ class RealEstateModelDefault extends JModelItem
 		$mailer->setSubject("Website Enquiry From: ".$_SERVER['SERVER_NAME']);
 
 		// Message Body
-		$prop = JRoute::_( $_SERVER['SERVER_NAME']."/index.php?option=com_realestate&view=Default&layout=singleproperty&id=".$_POST['prop_id']  );
+		$propLink = "http://".JRequest::getVar('respo_for');
+		$propTitle = JRequest::getVar('prop_title');
+
 		$body   = "<p><small>This is system generated mail:</small> </p>
-			<div><p><strong>Enquiry For</strong>: <a href='$prop' title='$_POST[respo_for]'>$_POST[respo_for]</a> </p>
+			<div><p><strong>Enquiry For</strong>: <a href='$propLink' title='$propTitle'>$propTitle</a> </p>
 			<p><strong>From :</strong> $_POST[email]</p>
 			<p><strong>Full Name :</strong> $_POST[first_name]"." "."$_POST[last_name] </p>
 			<p><strong>Company :</strong> $_POST[company] </p>
@@ -161,6 +156,8 @@ class RealEstateModelDefault extends JModelItem
 			echo 'Error sending email: ' . $send->getMessage();
 		} else {
 			$result = JFactory::getApplication()->enqueueMessage('Mail Sent Successfully');
+			echo $body;
+			$thank = " ";
 		}
 		return $result;
 	}
@@ -168,3 +165,4 @@ class RealEstateModelDefault extends JModelItem
 
 	
 }
+

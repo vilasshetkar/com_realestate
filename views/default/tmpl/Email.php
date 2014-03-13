@@ -13,6 +13,12 @@ $document = JFactory::getDocument();
 
 ?>
 <?php 
+
+$prms = $this->params;
+
+$headingbgcolor= $prms->get('headingbgcolor'); 
+$headingtxtcolor =$prms->get('headingtxtcolor'); 
+ 
 // Add Javascript directly here
 $document->addScriptDeclaration('
 $(document).ready(function(){
@@ -28,101 +34,64 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 ');
 ?>
 <?php 
-/*if (isset($_POST['submit'])=='Submit'){
-$subject='Website Enquiry';
+		$emailView = JRoute::_( "index.php?option=com_realestate&view=default&layout=email&id=".JRequest::getVar('id')  );
 
-$to = 'vilasshetkar@gmail.com' ;//$_SESSION['email'] ;
-$from = $_POST['email'] ;
-$msg_subject = $subject ;
-$message =  "This is system generated mail: \r\n
-			From : $_POST[email] \r\n
-			Full Name : $_POST[first_name]"." "."$_POST[last_name] \r\n
-			Company : $_POST[company] \r\n
-			Phone : $_POST[phone] \r\n \r\n \r\n
-			Message : \r\n
-			$_POST[message]" ;
-$headers = 'From: '.$from."\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-$send_mail = mail($to,$msg_subject,$message,$headers);
-$thank="<form><h1 align='center'>Thank you! We will contact you soon!</h1></form>";
-echo $thank;
-		}*/
+	if(JRequest::getVar('propTitle')){
+		$propLink = JRoute::_( $_SERVER['SERVER_NAME']."/index.php?option=com_realestate&view=Default&layout=singleproperty&id=".JRequest::getVar('id')  );
+		$propTitle = JRequest::getVar('propTitle');
+	}else{
+		$propLink = $_SERVER['SERVER_NAME'];
+		$propTitle = "Website";
+	
+	}
 ?>
-<?php foreach($this->property as $i => $row): ?>
-
-<?php if (!isset($thank)){ ?>
-
-    
-  <form action="" method="post" name="form1" role="form" class="form-horizontal" id="form1">
- <fieldset>
-    <legend>Enquiry Form </legend>
-    <table>
-      <tr>
-        <td><div class="form-group">
-          <label for="first_name" class="col-sm-2 control-label">First Name</label></td>
-          </div>
-        <td><div class="col-sm-10">
-            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
-          </div></td>
-      </tr>
-      <tr>
-        <td><div class="form-group">
-            <label for="last_name" class="col-sm-2 control-label">Last Name</label>
-          </div></td>
-        <td><div class="col-sm-10">
-            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
-          </div></td>
-      </tr>
-      <tr>
-        <td><div class="form-group">
-            <label for="email" class="col-sm-2 control-label">Email</label>
-          </div></td>
-        <td><div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-          </div></td>
-      </tr>
-      <tr>
-        <td><div class="form-group">
-            <label for="phone" class="col-sm-2 control-label">Mobile</label>
-          </div></td>
-        <td><div class="col-sm-10">
-            <input type="number" class="form-control" id="phone" name="phone" placeholder="Mobile">
-          </div></td>
-      </tr>
-      <tr>
-        <td><div class="form-group">
-            <label for="company" class="col-sm-2 control-label">Company Name</label>
-          </div></td>
-        <td><div class="col-sm-10">
-            <input type="text" class="form-control" id="company" name="company" placeholder="Company Name">
-          </div></td>
-      </tr>
-      <tr>
-        <td><div class="form-group">
-            <label for="address" class="col-sm-2 control-label">Address</label>
-          </div></td>
-        <td><div class="col-sm-10">
-            <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-          </div></td>
-      </tr>
-      <tr>
-        <td><label for="message" class="col-sm-2 control-label">Message</label></td>
-        <td><textarea class="form-control" rows="3" id="message" name="message"></textarea></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><div class="form-signin">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button class="btn btn-large btn-primary" name="submit" id="submit" value="Send Enquiry" type="submit">Send Enquiry</button>
-            </div>
-          </div></td>
-      </tr>
-    </table>
-  </fieldset>
-      <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $row['title']?>" />
-      <input name="prop_id" type="hidden" id="prop_id" value="<?php echo $row['id']?>" />
-     
- 
+    <h3>Send Enquiry: </h3>
+  <form action="<?php echo $emailView ; ?>" method="post" name="form1" class="form-horizontal" id="form1">
+    <div class="control-group">
+      <label class="control-label" for="first_name">First Name: </label>
+      <div class="controls"> <span id="sprytextfield1">
+        <input type="text" name="first_name" id="first_name" />
+        <span class="textfieldRequiredMsg">A value is require</span></span> </div>
+    </div>
+    <div class="control-group">
+    <label class="control-label" for="last_name">Last Name: </label>
+    <div class="controls"> <span id="sprytextfield2">
+      <input type="text" name="last_name" id="last_name" />
+      <span class="textfieldRequiredMsg">A value is required.</span></span> </div>
+    </div>
+    <div class="control-group">
+    <label class="control-label" for="email">Email: </label>
+    <div class="controls"> <span id="sprytextfield3">
+      <input type="text" name="email" id="email" />
+      <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Please provide a valid email id.</span></span> </div>
+      </div>
+    <div class="control-group">
+      <label class="control-label" for="phone">Mobile: </label>
+      <div class="controls"> <span id="sprytextfield4">
+        <input type="text" name="phone" id="phone" />
+        <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Please provide 10 digit mobile no.</span></span> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="company">Company Name: </label>
+      <div class="controls"> <span id="sprytextfield6">
+        <input type="text" name="company" id="company" />
+        </span> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="address">Address: </label>
+      <div class="controls"> <span id="sprytextfield5">
+        <input type="text" name="address" id="address" />
+        <span class="textfieldRequiredMsg">A value is required.</span></span> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="message">Messate: </label>
+      <div class="controls"> <span id="sprytextarea1">
+        <textarea name="message" id="message" cols="45" rows="3"></textarea>
+        Characters left <span id="countsprytextarea1"></span><span class="textareaMaxCharsMsg">Exceeded maximum number of characters.</span></span> </div>
+    </div>
+    <div class="controls">
+      <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $propLink; ?>" />
+      <input name="prop_title" type="hidden" id="prop_title" value="<?php echo $propTitle ; ?>" />
+      <input type="submit" name="submit" id="submit" value="Send Enquiry" />
+    </div>
   </form>
-<?php } ?>
-<?php endforeach; ?>

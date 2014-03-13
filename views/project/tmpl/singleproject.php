@@ -1,10 +1,7 @@
 <?php
 // no direct access
 defined('_JEXEC') or die;
-JHtml::_('behavior.tooltip');
-JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.bxSlider.min.js');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/prop-view.css');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/style.css');
+JHtml::_('behavior.modal');
 $document = JFactory::getDocument();
  
 // Add Javascript directly here
@@ -22,40 +19,63 @@ $document->addScriptDeclaration('
 <?php foreach($this->property as $i => $row): ?>
 <?php 
 $id = ($row['id'])-1;
-$link = JRoute::_( "index.php?view=prop&id=".$id ); ?>
+$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propTitle=".$row['title']);
+?>
+
 <h2> <?php echo $row['title']?></h2>
+<div class="pull-right">
+<a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a></div>
+
+
 <ul class="nav nav-tabs">
+<?php if($row['overview']!= ""):?>
   <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
+<?php endif ?>
+<?php if($row['amenities']!= ""):?>
   <li><a href="#amenities" data-toggle="tab">Amenities</a></li>
+<?php endif ?>
+<?php if($row['specifications']!= ""):?>
   <li><a href="#specifications" data-toggle="tab">Specifications</a></li>
+<?php endif ?>
+<?php if($row['location_map']!= ""):?>
   <li><a href="#location-map" data-toggle="tab">Location Map</a></li>
+<?php endif ?>
+<?php if($row['layout_map']!= ""):?>
   <li><a href="#layout-map" data-toggle="tab">Layout Map</a></li>
+<?php endif ?>
+<?php if($row['floor_plans']!= ""):?>
   <li><a href="#floor-plans" data-toggle="tab">Floor Plans</a></li>
+<?php endif ?>
+<?php if($row['availability']!= ""):?>
   <li><a href="#availability" data-toggle="tab">Availability</a></li>
+<?php endif ?>
+<?php if($row['contact']!= ""):?>
+  <li><a href="#contact" data-toggle="tab">Contact</a></li>
+<?php endif ?>
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="overview">
-
-      <div class="slider pull-left">
-        <a class="fancybox" rel="gall1" href="<?php echo $row['proj_img']?>"><img src="<?php echo $row['proj_img']?>" /></a>
+<div class="row-fluid">
+      <div class="slider span4">
+        <a class="modal" href="<?php echo $row['proj_img']?>"><img src="<?php echo $row['proj_img']?>" /></a>
       </div>
-      <div class="pull-right">
-      <table width="100%" cellpadding="5"  cellspacing="0" class="border">
+      <div class="span8">
+      <table class="table table-hover">
 	            <tbody>
-	              <tr valign="top">
-	                <td width="37%" align="left" valign="top">Project Type</td>
-	                <td width="3%" align="left" valign="top"><strong>:</strong></td>
-	                <td width="58%" align="left" valign="top"><?php echo $row['type']?></td>
+	              <tr>
+	                <td class="span4">Project Type</td>
+	                <td class="span1"><strong>:</strong></td>
+	                <td class="span7"><?php echo $row['type']?></td>
                   </tr>
-	              <tr valign="top">
-	                <td align="left" valign="top">Location</td>
-	                <td align="left" valign="top"><strong>:</strong></td>
-	                <td align="left" valign="top"><?php echo $row['location']?></td>
+	              <tr>
+	                <td>Location</td>
+	                <td><strong>:</strong></td>
+	                <td><?php echo $row['location']?></td>
                   </tr>
                 </tbody>
               </table>
        </div>
-       <div class="clearfix"></div>
+</div>
        <div>
            <h3>Overview:</h3>
            <span class="detail"><?php echo $row['overview']?></span>
@@ -99,7 +119,15 @@ $link = JRoute::_( "index.php?view=prop&id=".$id ); ?>
            <span class="detail"><?php echo $row['availability']?></span>
        </div>
   </div>
+  <div class="tab-pane" id="contact">
+       <div>
+           <h3>Contact:</h3>
+           <span class="detail"><?php echo $row['contact']?></span>
+       </div>
+  </div>
 </div>
 	
 <?php endforeach; ?>
+
+<hr>
      </div>

@@ -1,47 +1,66 @@
 <?php
 
+
 // no direct access
 defined('_JEXEC') or die;
+
+
+JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.min.js');
 JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.bxSlider.min.js');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/style.css');
+JHtml::script(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextField.js');
+JHtml::script(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextarea.js');
+JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/prop-view.css');
+JHtml::stylesheet(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextField.css');
+JHtml::stylesheet(Juri::base() . 'components/com_realestate/js/Spray/SpryValidationTextarea.css');
 $document = JFactory::getDocument();
- 
+
+
+JHTML::_('behavior.modal');
 // Add Javascript directly here
 $document->addScriptDeclaration('
     $(document).ready(function(){
-		$("a").click(function(){
-			//alert("An inline JavaScript Declaration");
-		});
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {validateOn:["blur"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "none", {validateOn:["blur"]});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "email", {validateOn:["blur"]});
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "phone_number", {format:"phone_custom", pattern:"0000000000", validateOn:["blur"]});
+var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "none", {validateOn:["blur"]});
+var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {isRequired:false, maxChars:200, counterType:"chars_remaining", counterId:"countsprytextarea1"});
+var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none", {isRequired:false});
+
     });
 ');
+
 ?>
  
-<form action="<?php echo JRoute::_('index.php?option=com_realestate'); ?>" method="post">
-
-<?php foreach($this->category as $i => $item):
-$propCategory = JRoute::_( "index.php?view=Default&layout=default&category=".$item['category'] ); 
-
-?>
-<a class="btn btn-primary" href="<?php echo $propCategory ?>" title=""><?php echo $item['category']; ?></a><div class="divider-vertical pull-left"></div>
-<?php endforeach; ?>
+<?php
+$prms = $this->params;
+$catShow = $prms->get('propCategory');
+	if($catShow == 1){
+		foreach($this->category as $i => $item):
+		$propCategory = JRoute::_( "index.php?view=Default&layout=default&category=".$item['category'] ); 
+		
+		?>
+		<a class="btn btn-primary" href="<?php echo $propCategory ?>" title=""><?php echo $item['category']; ?></a><div class="divider-vertical pull-left"></div>
+		<?php endforeach; ?>
+	<?php } ?>
 
 
 <?php foreach($this->items as $i => $item): ?>
 <tr class="row<?php echo $i % 2; ?>">
 <td>
 <?php 
-$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id'] ); 
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']  );
-$refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greeting['id']  );
+$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id']."&tmpl=component" ); 
+$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title']."&tmpl=component" );
+$refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']."&tmpl=component"  );
 ?>
 
 
-<div class="row-fluid">
+<div class="row-fluid featured-property">
         <div class="span12">
         <h4> <a href="<?php echo $link ; ?>"><?php echo $item->greeting['title'];?></a></h4>
         <div class="row-fluid">
         	<div class="span3">
-        	<img src="<?php echo $item->greeting['prop_image'];?>" />
+        	<img class="img-polaroid img-responsive" src="<?php echo $item->greeting['prop_image'];?>" alt="<?php echo $item->greeting['title'];?>" style="max-width:93%" />
         
         	</div>
         	<div class="span9">
@@ -83,9 +102,9 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
                     	<div class="row-fluid">
                             <div class="span12">
                               <div class="btn-group">
-                                <a class="btn btn-info" href="<?php echo $link; ?>">More Detail</a>
-                                <a class="btn btn-info" href="<?php echo $email; ?>">Send Email</a>
-                                 <a class="btn btn-info" href="<?php echo $refer; ?>">Refer Friend</a>
+                                <a class="btn btn-info modal" href="<?php echo $link; ?>" rel="{size: {x: 700, y: 480}}" >More Detail</a>
+                                <a class="btn btn-info modal" href="<?php echo $email; ?>" rel="{size: {x: 550, y: 480}}">Send Email</a>
+                                 <a class="btn btn-info modal" href="<?php echo $refer; ?>" rel="{size: {x: 400, y: 380}}">Contact</a>
                               </div>
                              
                             </div>
@@ -96,9 +115,9 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
         </div>
         </div>
         </div>
+        <hr>
 
 <?php endforeach; ?>
 <?php echo $this->pagination->getListFooter(); ?>
 
-</form>
 

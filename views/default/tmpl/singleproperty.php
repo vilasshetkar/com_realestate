@@ -1,8 +1,6 @@
 <?php
 // no direct access
 defined('_JEXEC') or die;
-JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.bxSlider.min.js');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/prop-view.css');
 $document = JFactory::getDocument();
  
 // Add Javascript directly here
@@ -18,14 +16,13 @@ $document->addScriptDeclaration('
 <?php 
 $id = ($row['id'])-1;
 $link = JRoute::_( "index.php?view=prop&id=".$id );
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']  );
+$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propTitle=".$row['title']);
  ?>
 
-<blockquote>
-  <p><?php echo $row['title']?> </p>
-</blockquote>
-<a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a>
-<p><?php echo $row['prop_desc']?></p>
+  <h3><?php echo $row['title']?> </h3>
+  <div class="pull-right">
+<a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a></div>
+<blockquote> <?php echo $row['prop_desc']?></blockquote>
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a href="#Property_Details" data-toggle="tab">Property Details</a></li>
   <li><a href="#Property_Built_Up_Details" data-toggle="tab">Property Built Up Details</a></li>
@@ -90,20 +87,26 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']  );
 <div class="tab-pane" id="Amenities">
   <table class="table table-stripped">
     <tr>
-      <p>
-        <?php if($row['power']=='1'){ echo 'Power Backup, ';}?>
-        <?php if($row['water']=='1'){ echo 'Water Storage, ';}?>
-      </p>
+      <ul>
+        <?php if($row['power']=='1'){ echo '<li>Power Backup</li>';}?>
+        <?php if($row['water']=='1'){ echo '<li>Water Storage</li>';}?>
+        <?php if($row['lift']=='1'){ echo '<li>Lift</li>';}?>
+        <?php if($row['res_parking']=='1'){ echo '<li>Reserve Parking</li>';}?>
+        <?php if($row['security']=='1'){ echo '<li>Security</li>';}?>
+        <?php if($row['maintenance']=='1'){ echo '<li>Maintenance Staff</li>';}?>
+        <?php if($row['gym']=='1'){ echo '<li>GYM</li>';}?>
+        <?php if($row['park']=='1'){ echo '<li>Park</li>';}?>
+        <?php if($row['tarrace']=='1'){ echo '<li>Private Tarrace</li>';}?>
+        <?php if($row['swimming']=='1'){ echo '<li>Swimming Pool</li>';}?>
+        <?php if($row['quarters']=='1'){ echo '<li>Servant Quarters</li>';}?>
+        <?php if($row['club']=='1'){ echo '<li>Club House</li>';}?>
+      </ul>
     </tr>
   </table>
 </div>
 <div class="tab-pane" id="Property_Address">
   <h4>Property Address</h4>
-  <table class="table table-stripped">
-    <tr>
       <p><?php echo $row['address']?></p>
-    </tr>
-  </table>
 </div>
 <div class="tab-pane" id="Property_Seller_Detail">
   <table class="table table-bordered">
@@ -131,23 +134,3 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']  );
   </table>
 </div>
 <?php endforeach; ?>
-<script type="text/javascript" src="../../../js/bootstrap-tab.js"></script> 
-<script type="text/javascript" src="../../../js/jquery.js"></script> 
-<script type="text/javascript">
-	 
-	   
-    
-    $("#myTab a").click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-    });
-
-   
-    </script> 
-
-<!-- <script>
-$(function () {
-$('#myTab a:last').tab('show');
-})
-</script> --> 
-

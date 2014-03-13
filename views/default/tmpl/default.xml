@@ -3,4 +3,13 @@
         <layout title="Properties"  option="default">
                 <message>View all published Properties</message>
         </layout>
+<fields name="params">
+        <fieldset name="Show Category">
+			<field name="propCategory" type="radio" default="1" label="Select an option" description="You can show/hide category buttons from category view.">
+			  <option value="1">Show</option>
+			  <option value="0">Hide</option>
+			</field>
+        </fieldset>
+
+    </fields>
 </metadata>

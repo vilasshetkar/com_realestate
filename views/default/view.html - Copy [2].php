@@ -17,7 +17,7 @@ class RealEstateViewDefault extends JViewLegacy
 		$menu	= $menus->getActive();
 		$model = $this->getModel();
 		$layout =$this->getLayout();
-			$this->params = $params;
+
 		
 		switch ($layout)
 		{
@@ -154,14 +154,13 @@ class RealEstateViewDefault extends JViewLegacy
 				
 			//Get property id from url parameter like $_GET
 			$id = JRequest::getVar('id');
-			$email = JRequest::getVar('propTitle');
-			$responce = JRequest::getVar('respo_for');
+			$email = JRequest::getVar('respo_for');
 	
 			//get Model Object
 			$result = $model->getMsg($id);
 	
 			$this->property = $result;
-			if($responce){
+			if($email){
 				echo $model->sendMail($id);
 			}
 			
@@ -169,9 +168,9 @@ class RealEstateViewDefault extends JViewLegacy
 				$title = "Send Email" ;
 			}else{
 	
-				$title = "Send Email: ".$email;
-				$metakey = $email;
-				$metadesc = $email;
+				$title = "Send Email: ".$this->property[0]['title'];
+				$metakey = $this->property[0]['meta_key'];
+				$metadesc = $this->property[0]['meta_desc'];
 				//Set Browser Title
 				$this->document->setTitle($title);
 				//Set Browser Meta Description
