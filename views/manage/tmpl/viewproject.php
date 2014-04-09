@@ -1,12 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
 
-<body>
-<table class="table-bordered table-hover table" id="menutbl" >
+<table class="table-bordered table" id="menutbl" >
   <tr>
     <th> <p>Sr. No. </p></th>
     <th colspan="2" >Project Details</th>
@@ -65,5 +58,3 @@
          href="http://manage.goldenlandmarks.net/manage/upload/rename.php?proj_floor_plans=1" title="Project Floor Plans Images"> Floor Plans Image</a></td>
   </tr>
 </table>
-</body>
-</html>

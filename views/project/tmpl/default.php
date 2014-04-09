@@ -30,10 +30,11 @@ $document->addScriptDeclaration('
 
 		 <?php foreach($this->items as $i => $item): ?>
 <?php 
-$linkModal = JRoute::_( "index.php?view=project&layout=SingleProject&id=".$item->greeting['id']); 
-$link = JRoute::_( "index.php?view=project&layout=SingleProject&id=".$item->greeting['id']); 
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']  );
-$refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greeting['id']  );
+$linkModal = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
+$link = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
+$email = JRoute::_( "index.php?view=Default&layout=email&id=".$item->greeting['id']  );
+$refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']  );
+$ViewAll = JRoute::_( "index.php?option=com_realestate&view=project"); 
 ?>
 
 <div class="well span4 pull-left ">
@@ -42,9 +43,16 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
 		<?php echo $item->greeting['title'];?>
 	</a>
 </h3>
-	<a href="<?php echo $link ; ?>" rel="{size: {x: 700, y: 480}}">
+      <?php if($item->greeting['proj_img']!=""){ ?>
+	<a href="<?php echo $linkModal ; ?>" rel="{size: {x: 700, y: 480}}">
 		<img class="img-polaroid" src="<?php echo $item->greeting['proj_img'];?>" />
 	</a>
+            <?php }else{ ?>
+        <a href="<?php echo $linkModal ; ?>" rel="{size: {x: 700, y: 480}}">
+        <img style="max-width:90%" class="img-polaroid" src="http://manage.goldenlandmarks.net/propertyImages/no-image.jpg" />
+        </a>
+        <?php } ?>
+
     <div>
 <table class="table table-hover">
               <tr>
@@ -63,7 +71,7 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
 </div>
 <?php endforeach; ?>
 <div class="clearfix"></div>
-<div class="pagination"><?php echo $this->pagination->getListFooter(); ?></div>
+
 </div>
  
 

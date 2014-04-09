@@ -13,17 +13,17 @@ jimport('joomla.application.component.model');
  */
 class RealEstateModelManage extends JModelItem
 {
-	public function __construct($config = array())
+	/*public function __construct($config = array())
          {
                 parent::__construct($config);
  
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = 'localhost';    // Database host name 169.254.182.25
+				$option['host']     = '169.254.182.25';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
-				$option['database'] = 'prop';      // Database name
+				$option['database'] = 'realEstate';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
@@ -33,7 +33,7 @@ class RealEstateModelManage extends JModelItem
 				 JRequest::setVar('limitstart', JRequest::getVar('limitstart', 0, '', 'int'));
 				
                 parent::setDbo($db);
-         }
+         }*/
 
 	public function addProperty()
 	{		 
@@ -66,6 +66,43 @@ public function viewProperty()
 		return $result;
 	}
 
+public function uploadImage($imageInput)
+	{		 
+		/***********************
+		*                     *
+		* File upload example *
+		*                     *
+		***********************/
+				
+		//Retrieve file details from uploaded file, sent from upload form
+		$file = JRequest::getVar($imageInput, null, 'files', 'array');
+		 
+		//Import filesystem libraries. Perhaps not necessary, but does not hurt
+		jimport('joomla.filesystem.file');
+		 
+		//Clean up filename to get rid of strange characters like spaces etc
+		$filename = JFile::makeSafe($file['name']);
+		 echo $filename.'<br>';
+		//Set up the source and destination of the file
+		$src = $file['tmp_name'];
+		$dest = JPATH_COMPONENT . DS . "uploads" . DS . $filename;
+		 
+		//First check if the file has the right extension, we need jpg only
+		if ( strtolower(JFile::getExt($filename) ) == 'jpg' || 'jpeg' || 'png' || 'gif') {
+		   if ( JFile::upload($src, $dest) ) {
+			  //Redirect to a page of your choice
+			$result = JFactory::getApplication()->enqueueMessage('Image Uploaded Successfully');
+		   } else {
+			  //Redirect and throw an error message
+			$result = JFactory::getApplication()->enqueueMessage('Image not Uploaded');
+		   }
+		} else {
+		   //Redirect and notify user file is not right extension
+			$result = JFactory::getApplication()->enqueueMessage('Image must be .jpg, .jpeg, .png or .gif');
+		}
+		
+		return $result;
+	}
 
 	public function sendMail(){
 		$mailer = JFactory::getMailer();
@@ -114,6 +151,44 @@ public function viewProperty()
 		return $result;
 	}
 
+public function updateColumn($updateCol, $value, $propId)
+	{		
+		
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+		$query = "UPDATE `2_real_property` SET `$updateCol` = '$value' WHERE `id` = $propId";
+
+		$db->setQuery($query);
+		//mysql_query($query) or die(mysql_error());
+		if($value == 0){ $value = "Not"; }else{ $value = ""; }
+		$result = JFactory::getApplication()->enqueueMessage("Property made $value $updateCol Successfully",'message');
+		
+
+		return $result;
+	}
+
+
+public function getAjax()
+	{		
+
+
+		$propId = JRequest::getVar('id');
+		$action = JRequest::getVar('action');
+		$value = JRequest::getVar('value');
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+		$query = "UPDATE `2_real_property` SET `$action` = '$value' WHERE `id` = $propId";
+
+		//$db->setQuery($query);
+		mysql_query($query) or die(mysql_error());
+		
+		if($value == 0){ $value = "Not"; }else{ $value = ""; }
+		
+		$result = "Property made $value $action Successfully";
+		
+
+		return $result;
+	}
 
 	
 }

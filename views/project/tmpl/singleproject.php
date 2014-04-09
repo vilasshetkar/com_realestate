@@ -19,7 +19,7 @@ $document->addScriptDeclaration('
 <?php foreach($this->property as $i => $row): ?>
 <?php 
 $id = ($row['id'])-1;
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propTitle=".$row['title']);
+$email = JRoute::_( "index.php?view=default&layout=email&id=".$row['id']."&propTitle=".$row['title']);
 ?>
 
 <h2> <?php echo $row['title']?></h2>
@@ -56,10 +56,14 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
 <div class="tab-content">
   <div class="tab-pane active" id="overview">
 <div class="row-fluid">
-      <div class="slider span4">
-        <a class="modal" href="<?php echo $row['proj_img']?>"><img src="<?php echo $row['proj_img']?>" /></a>
+      <div class="span3">
+      <?php if($row['proj_img']!=""){ ?>
+        <a class="modal" href="<?php echo $row['proj_img']?>"><img style="max-width:90%" class="img-polaroid" src="<?php echo $row['proj_img']?>" /></a>
+        <?php }else{ ?>
+        <img style="max-width:90%" class="img-polaroid" src="http://manage.goldenlandmarks.net/propertyImages/no-image.jpg" />
+        <?php } ?>
       </div>
-      <div class="span8">
+      <div class="span9">
       <table class="table table-hover">
 	            <tbody>
 	              <tr>
@@ -77,6 +81,7 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
        </div>
 </div>
        <div>
+       <hr />
            <h3>Overview:</h3>
            <span class="detail"><?php echo $row['overview']?></span>
        </div>
@@ -128,6 +133,9 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
 </div>
 	
 <?php endforeach; ?>
+
+<div>
+<a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a></div>
 
 <hr>
      </div>

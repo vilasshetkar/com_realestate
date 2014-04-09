@@ -49,6 +49,18 @@ class RealEstateViewManage extends JViewLegacy
 	
 			//get Model Object
 			$result = $model->viewProperty();
+			
+			$featured = JRequest::getVar('propFeatured');
+			
+			$status = JRequest::getVar('propStatus');
+			$propId = JRequest::getVar('id');
+			if(isset($featured)){
+				$model->updateColumn("featured", $featured, $propId);
+			}
+			if($status){
+				$model->updateColumn("featured", $status, $propId);
+			}
+				
 	
 			$this->property = $result;
 			$title = $this->property[0]['title'];
@@ -59,7 +71,7 @@ class RealEstateViewManage extends JViewLegacy
 			
 			//for breadcrumb  -> Pathway
 			$pathway = $app->getPathway();
-			$pathway->addItem($title, JRoute::_( "index.php?view=prop&id=".$id ));
+			//$pathway->addItem($title, JRoute::_( "index.php?view=prop&id=".$id ));
 	
 			//Set Browser Title
 			//$this->document->setTitle($title);

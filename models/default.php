@@ -4,7 +4,13 @@
 defined('_JEXEC') or die;
 jimport('joomla.application.component.model');
 
-
+/**
+ * Content Component Archive Model
+ *
+ * @package     Joomla.Site
+ * @subpackage  com_content
+ * @since       1.5
+ */
 class RealEstateModelDefault extends JModelItem
 {
 	public function __construct($config = array())
@@ -14,7 +20,7 @@ class RealEstateModelDefault extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = 'localhost';    // Database host name 169.254.182.25
+				$option['host']     = '169.254.182.25';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
 				$option['database'] = 'prop';      // Database name
@@ -157,6 +163,7 @@ class RealEstateModelDefault extends JModelItem
 		} else {
 			$result = JFactory::getApplication()->enqueueMessage('Mail Sent Successfully');
 			echo $body;
+
 			$thank = " ";
 		}
 		return $result;
@@ -165,4 +172,3 @@ class RealEstateModelDefault extends JModelItem
 
 	
 }
-

@@ -46,12 +46,11 @@ $catShow = $prms->get('propCategory');
 
 
 <?php foreach($this->items as $i => $item): ?>
-<tr class="row<?php echo $i % 2; ?>">
-<td>
 <?php 
-$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id']."&tmpl=component" ); 
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title']."&tmpl=component" );
-$refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']."&tmpl=component"  );
+$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id'] ); 
+$linkModal = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id']); 
+$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title'] );
+$refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']  );
 ?>
 
 
@@ -60,7 +59,12 @@ $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->gree
         <h4> <a href="<?php echo $link ; ?>"><?php echo $item->greeting['title'];?></a></h4>
         <div class="row-fluid">
         	<div class="span3">
+            <?php if($item->greeting['prop_image']!="") { ?>
         	<img class="img-polaroid img-responsive" src="<?php echo $item->greeting['prop_image'];?>" alt="<?php echo $item->greeting['title'];?>" style="max-width:93%" />
+                    <?php }else{ ?>
+        <img style="max-width:90%" class="img-polaroid" src="http://manage.goldenlandmarks.net/propertyImages/no-image.jpg" />
+        <?php } ?>
+
         
         	</div>
         	<div class="span9">
@@ -102,9 +106,9 @@ $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->gree
                     	<div class="row-fluid">
                             <div class="span12">
                               <div class="btn-group">
-                                <a class="btn btn-info modal" href="<?php echo $link; ?>" rel="{size: {x: 700, y: 480}}" >More Detail</a>
-                                <a class="btn btn-info modal" href="<?php echo $email; ?>" rel="{size: {x: 550, y: 480}}">Send Email</a>
-                                 <a class="btn btn-info modal" href="<?php echo $refer; ?>" rel="{size: {x: 400, y: 380}}">Contact</a>
+                                <a class="btn btn-info" href="<?php echo $link; ?>" rel="{size: {x: 700, y: 480}}" >More Detail</a>
+                                <a class="btn btn-info" href="<?php echo $email; ?>" rel="{size: {x: 550, y: 480}}">Send Enquiry</a>
+                                 <a class="btn btn-info" href="<?php echo $refer; ?>" rel="{size: {x: 400, y: 380}}">Contact</a>
                               </div>
                              
                             </div>
@@ -118,6 +122,8 @@ $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->gree
         <hr>
 
 <?php endforeach; ?>
+<div class="pagination">
 <?php echo $this->pagination->getListFooter(); ?>
+</div>
 
 

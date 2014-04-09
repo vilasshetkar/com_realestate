@@ -27,7 +27,7 @@ class RealEstateModelProject extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = 'localhost';    // Database host name 169.254.182.25
+				$option['host']     = '169.254.182.25';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
 				$option['database'] = 'prop';      // Database name
@@ -51,7 +51,6 @@ class RealEstateModelProject extends JModelItem
 		}else{ $dblimit = "" ; }
 		
 		$query = "SELECT * From `2_real_project` WHERE status='1' $dblimit AND `domain` LIKE '%$_SERVER[HTTP_HOST]%' ";
-		echo $query;
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
@@ -64,7 +63,7 @@ class RealEstateModelProject extends JModelItem
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 
-		$query = "SELECT * From `2_real_project` WHERE status='1' AND featured= '0' AND `domain` LIKE '%$_SERVER[HTTP_HOST]%' ";
+		$query = "SELECT * From `2_real_project` WHERE status='1' AND featured= '1' AND `domain` LIKE '%$_SERVER[HTTP_HOST]%' ";
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];

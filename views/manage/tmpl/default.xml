@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-        <layout title="Properties"  option="default">
-                <message>View all published Properties</message>
+        <layout title="Manage Properties"  option="default">
+                <message>Manage all Properties</message>
         </layout>
 </metadata>

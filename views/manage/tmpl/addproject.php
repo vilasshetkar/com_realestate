@@ -1,11 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
-
-<body>
+<table align="center">
+        <tr align="center">
+          <td align="center"><p>
+              <button class="btn btn-large btn-primary" type="submit">Submit</button>
+            </p></td>
+          <td><p>
+              <button class="btn btn-large btn-primary" type="reset">Reset</button>
+            </p></td>
+        </tr>
+      </table>
 <form class="form-horizontal">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a href="#Basic_Info" data-toggle="tab">Basic Info</a></li>
@@ -19,7 +21,7 @@
     <div class="control-group">
       <label class="control-label" for="title">Project Title</label>
       <div class="controls">
-        <input type="text" id="title">
+        <input type="text" id="title" name="title" >
       </div>
     </div>
     <div class="control-group">
@@ -87,7 +89,7 @@
     </div>
   </div>
   <div class="tab-pane" id="Availabillity">
-    <h4>Availabillity</h4>
+   
     <div class="control-group">
       <label class="control-label" for="Availabillity">Availabillity</label>
       <div class="controls">
@@ -96,7 +98,7 @@
     </div>
   </div>
   <div class="tab-pane" id="Contact">
-    <h4>Contact Details</h4>
+    
     <div class="control-group">
       <label class="control-label" for="Contact">Contact</label>
       <div class="controls">
@@ -104,7 +106,8 @@
       </div>
     </div>
   </div>
-  <input class="btn-primary" type="submit" name="project submit" />
+  </div>
+ 
 </form>
 <script type="text/javascript" src="js/jquery.js"></script> 
 <script type="text/javascript" src="js/bootstrap-tab.js"></script> 
@@ -114,5 +117,3 @@
     e.relatedTarget // previous tab
     })
     </script>
-</body>
-</html>

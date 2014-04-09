@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Featured Project!</name>
+    <author>Vilas Shetkar</author>
+    <version>1.1.0</version>
+    <description>Featured Project! module.</description>
+    <files>
+        <filename>mod_featuredproj.xml</filename>
+        <filename module="mod_featuredproj">mod_featuredproj.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/list.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>
