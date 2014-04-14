@@ -31,17 +31,16 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 
 
 <form class="form-horizontal">
-<div class="container">
-  <legend id="basicinfo">Basic Info</legend>
+  <legend id="basic-info">Post Your Property</legend>
   <div class="control-group">
-    <label for="PropertyFor" class="control-label">Prperty For</label>
+    <label for="PropertyFor" class="control-label">Property For</label>
     <div class="controls form-inline">
       <label class="radio">
-        <input type="radio" name="property_for" id="list_prop" value="Sale" >
+        <input type="radio" name="property_for" id="prop_sale" value="Sale" >
         Sale</label>
       
       <label class="radio">
-        <input type="radio" name="property_for" id="list_prop" value="PG" >
+        <input type="radio" name="property_for" id="prop_rent" value="Rent" >
         Rent/Lease</label>
     </div>
   </div>
@@ -106,7 +105,7 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
   </div>
   </div>
   <div class="control-group">
- <label class="control-label" for="prop_desc">Property Description</label>
+ 	<label class="control-label" for="prop_desc">Property Description</label>
     <div class="controls">
       <textarea rows="3" name="address" id="prop_desc"></textarea>
     </div>
@@ -177,11 +176,9 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
   
   <div class="control-group">
   <div class="control-label">
-    <input type="submit" class="btn btn-primary" value="Submit"  /></div> 
-    <div class="controls">
-<input type="reset" value="Reset" class="btn btn-primary"  />   </div>
+    <input type="submit" class="btn btn-primary" value="Submit"  />
   </div>
+  </div>
+  </form>
 
-  
-</div>
 

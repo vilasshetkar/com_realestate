@@ -31,19 +31,19 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 
 
 <form class="form-horizontal">
-<div class="container">
-  <legend id="basicinfo">Basic Info</legend>
+  <legend id="basicinfo">Post Your Requirement</legend>
   <div class="control-group">
     <label for="PropertyFor" class="control-label">Prperty For</label>
     <div class="controls form-inline">
       <label class="radio">
-        <input type="radio" name="property_for" id="list_prop" value="Sale" >
-        Sale</label>
-      <input type="radio" name="property_for" id="list_prop" value="Sale" >
-        Buy</label>
+      	<input type="radio" name="property_for" id="prop_sale" value="Sale" >Sale
+      </label>
       <label class="radio">
-        <input type="radio" name="property_for" id="list_prop" value="PG" >
-        Rent/Lease</label>
+      	<input type="radio" name="property_for" id="prop_buy" value="Sale" >Buy
+      </label>
+      <label class="radio">
+        <input type="radio" name="property_for" id="prop_rent" value="PG" >Rent/Lease
+      </label>
     </div>
   </div>
   <div class="control-group">
@@ -168,7 +168,5 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
   <div class="control-group">
   <div class="control-label">
     <input type="submit" class="btn btn-primary" value="Submit"  /></div> 
-    <div class="controls">
-<input type="reset" value="Reset" class="btn btn-primary"  />   </div>
-  </div>
-</div>
+	</div>
+</form>

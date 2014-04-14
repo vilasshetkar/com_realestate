@@ -27,32 +27,12 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 });
 ');
 ?>
-<?php 
-/*if (isset($_POST['submit'])=='Submit'){
-$subject='Website Enquiry';
 
-$to = 'vilasshetkar@gmail.com' ;//$_SESSION['email'] ;
-$from = $_POST['email'] ;
-$msg_subject = $subject ;
-$message =  "This is system generated mail: \r\n
-			From : $_POST[email] \r\n
-			Full Name : $_POST[first_name]"." "."$_POST[last_name] \r\n
-			Company : $_POST[company] \r\n
-			Phone : $_POST[phone] \r\n \r\n \r\n
-			Message : \r\n
-			$_POST[message]" ;
-$headers = 'From: '.$from."\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-$send_mail = mail($to,$msg_subject,$message,$headers);
-$thank="<form><h1 align='center'>Thank you! We will contact you soon!</h1></form>";
-echo $thank;
-		}*/
-?>
 
 
     
   <form action="" method="post" name="form1" role="form" class="form-horizontal" id="form1">
- <h4>Enquiry Form </h4>
+ <legend id="basicinfo">Send Enquiry Form</legend>
   <div class="control-group">
     <label for="first_name" class="control-label">First Name</label>
     <div class="controls">

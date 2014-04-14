@@ -27,7 +27,7 @@ class RealEstateModelProject extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = '169.254.182.25';    // Database host name 169.254.182.25
+				$option['host']     = 'localhost';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
 				$option['database'] = 'prop';      // Database name
@@ -67,6 +67,18 @@ class RealEstateModelProject extends JModelItem
 		$db->setQuery($query);
 		$result = $db->loadAssocList();//loadRowList(); //loadRow();
 		//$result; //$result[2];
+		return $result;
+	}
+	public function HomeProject($projName)
+	{		 
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		$query = "SELECT * From `2_real_project` WHERE status='1' AND featured= '1' AND `title` = '$projName' ";
+		$db->setQuery($query);
+		$result = $db->loadAssoc();//loadRowList(); //loadRow();
+		//$result; //$result[2];
+		echo $query;
 		return $result;
 	}
 }

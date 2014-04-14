@@ -23,19 +23,19 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
  ?>
 
   <h3><?php echo $row['title']?> </h3>
-	<div class="pull-right">
+	<!--<div class="pull-right">
         <a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a>
-    </div>
+    </div>-->
 <blockquote> <?php echo $row['prop_desc']?></blockquote>
-<ul class="nav nav-tabs" id="myTab">
+<!--<ul class="nav nav-tabs" id="myTab">
   <li class="active"><a href="#Property_Details" data-toggle="tab">Property Details</a></li>
   <li><a href="#Property_Built_Up_Details" data-toggle="tab">Property Built Up Details</a></li>
   <li><a href="#Amenities" data-toggle="tab">Amenities</a></li>
   <li><a href="#Property_Address" data-toggle="tab">Property Address</a></li>
   <li><a href="#Property_Seller_Detail" data-toggle="tab">Property Seller Detail</a></li>
-</ul>
-<div class="tab-content">
-    <div class="tab-pane active" id="Property_Details">
+</ul>-->
+<div class="row-fluid">
+	<div class="span12">
       <div class="row-fluid">
         <div class="span9">
           <div class="row-fluid">
@@ -65,21 +65,19 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
             </div>
           </div>
         </div>
-        <div class="span2">
+        <div class="span3">
         <?php if( $row['prop_image'] != "" ) { ?>
         <a class="modal" href="<?php echo $row['prop_image'];?>"> <img src="<?php echo $row['prop_image'];?>" /></a>
 		<?php }else{ ?>
         <a href="<?php echo $row['prop_image'];?>" >
-        <img style="max-width:90%" class="img-polaroid" src="http://manage.goldenlandmarks.net/propertyImages/no-image.jpg" />
+        <img style="max-width:90%; display:block;" class="img-polaroid" src="http://manage.goldenlandmarks.net/propertyImages/no-image.jpg" />
         </a>
         <?php } ?>
 
-        
         </div>
       </div>
-    </div>
-    <div class="tab-pane" id="Property_Built_Up_Details">
-    Property Built Up Details
+	<hr class="divider" />
+	<h3>Property Built Up Details</h3>
         <table class="table table-bordered">
           <tr>
             <th>Furnishing</th>
@@ -96,8 +94,8 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
             <td><?php echo $row['res_parking']?></td>
           </tr>
         </table>
-    </div>
-    <div class="tab-pane" id="Amenities">
+    <hr class="divider" />
+    <h3>Amenities</h3>
           <ul>
             <?php if($row['power']=='1'){ echo '<li>Power Backup</li>';}?>
             <?php if($row['water']=='1'){ echo '<li>Water Storage</li>';}?>
@@ -112,18 +110,13 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
             <?php if($row['quarters']=='1'){ echo '<li>Servant Quarters</li>';}?>
             <?php if($row['club']=='1'){ echo '<li>Club House</li>';}?>
           </ul>
-    </div>
-    <div class="tab-pane" id="Property_Address">
-      <h4>Property Address</h4>
-          <p><?php echo $row['address']?></p>
-    </div>
-    <div class="tab-pane" id="Property_Seller_Detail">
-      <table class="table table-bordered">
+    <hr class="divider" />
+      <h3>Property Address</h3>
+          <?php echo $row['address']?>
+    <hr class="divider" />
+    	<h3>Property Seller Detail</h3>
+      <table class="table table-bordered table-striped">
         <tbody>
-          <tr>
-            <th>Property Seller Detail</th>
-            <th></th>
-          </tr>
           <tr>
             <td>Contact Person</td>
             <td><?php echo $row['cont_name']?></td>
@@ -142,7 +135,8 @@ $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propT
           </tr>
         </tbody>
       </table>
-    </div>
+      <hr class="divider" />
+</div>
 </div>
 <div class="text-center">
         <a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a>

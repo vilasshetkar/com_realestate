@@ -92,6 +92,6 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
     <div class="controls">
       <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $propLink; ?>" />
       <input name="prop_title" type="hidden" id="prop_title" value="<?php echo $propTitle ; ?>" />
-      <input type="submit" name="submit" id="submit" value="Send Enquiry" />
+      <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Send Enquiry" />
     </div>
   </form>

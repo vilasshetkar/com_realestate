@@ -103,19 +103,31 @@ $email = JRoute::_( "index.php?view=default&layout=email&id=".$row['id']."&propT
   <div class="tab-pane" id="location-map">
        <div>
            <h3>Location Map:</h3>
-           <span class="detail"><?php echo $row['location_map']?></span>
+           <span class="detail">
+		   <a class="modal" href="<?php echo $row['location_map']?>">
+           	<img style="max-width:90%" class="img-polaroid" src="<?php echo $row['location_map']?>" />
+           </a>
+		   </span>
        </div>
   </div>
   <div class="tab-pane" id="layout-map">
        <div>
            <h3>Layout Map:</h3>
-           <span class="detail"><?php echo $row['layout_map']?></span>
+           <span class="detail">
+		   <a class="modal" href="<?php echo $row['layout_map']?>">
+           	<img style="max-width:90%" class="img-polaroid" src="<?php echo $row['layout_map']?>" />
+           </a>
+		   </span>
        </div>
   </div>
   <div class="tab-pane" id="floor-plans">
        <div>
            <h3>Floor Plans:</h3>
-           <span class="detail"><?php echo $row['floor_plans']?></span>
+           <span class="detail">
+		   <a class="modal" href="<?php echo $row['floor_plans']?>">
+           	<img style="max-width:90%" class="img-polaroid" src="<?php echo $row['floor_plans']?>" />
+           </a>
+		   </span>
        </div>
   </div>
   <div class="tab-pane" id="availability">
