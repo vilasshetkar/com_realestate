@@ -15,6 +15,31 @@ class RealEstateViewProject extends JViewLegacy
 		$model = $this->getModel();
 
 		if($this->getLayout()=='default'){
+			$this->defaultLayout();
+//here else statement		 
+		}elseif($this->getLayout()=='singleproject'){
+			$this->singleProject();
+		}else{
+			$this->singleProjectPage();
+		}
+		// Check for errors.
+			 if (count($errors = $this->get('Errors')))
+			 {
+				 JError::raiseError(500, implode('', $errors));
+				 return false;
+			 }
+		 // Display the template
+		 parent::display($tpl);
+	 }
+	 
+	 // This is default layout for grid view of project
+	 public function defaultLayout(){
+ 		$app	= JFactory::getApplication();
+		$params = $app->getParams();
+		$menus	= $app->getMenu();
+		$menu	= $menus->getActive();
+		$model = $this->getModel();
+
 			$result = $model->getMsg($id = null);
 	
 			$this->property = $result;
@@ -40,15 +65,16 @@ class RealEstateViewProject extends JViewLegacy
 			 JRequest::setVar('limitstart', JRequest::getVar('limitstart', 0, '', 'int'));
 			 
 		 
-		 // Check for errors.
-			 if (count($errors = $this->get('Errors')))
-			 {
-				 JError::raiseError(500, implode('', $errors));
-				 return false;
-			 }
-//here else statement		 
-		}else{
-			//Get property id from url parameter like $_GET
+	 }
+	 
+	 // Single Project display with tabs
+	 public function singleProject(){
+ 		$app	= JFactory::getApplication();
+		$params = $app->getParams();
+		$menus	= $app->getMenu();
+		$menu	= $menus->getActive();
+		$model = $this->getModel();
+	 			//Get property id from url parameter like $_GET
 			$id = JRequest::getVar('id');
 			$email = JRequest::getVar('email');
 	
@@ -83,13 +109,44 @@ class RealEstateViewProject extends JViewLegacy
 				$this->document->setMetadata('robots', $params->get('robots'));
 			}
 		}
-	 
-		 // Display the template
-		 parent::display($tpl);
-	 }
-	 
-	 public function form(){
-		 $name = JRequest::getVar('name');
-		 return $name;
-	 }
+		
+	// Project seperate pages for single project website
+	 public function singleProjectPage(){
+ 		$app	= JFactory::getApplication();
+		$params = $app->getParams();
+		$menus	= $app->getMenu();
+		$menu	= $menus->getActive();
+		$model = $this->getModel();
+	 			//Get property id from url parameter like $_GET
+			$id = JRequest::getVar('project');
+	
+			//get Model Object
+			$property = $model->HomeProject($id);
+	
+			$this->property = $property;
+	
+			$title = $this->property['title'];
+			$metakey = $this->property['title'];
+			$metadesc = $this->property['title'];
+			
+			//for breadcrumb  -> Pathway
+			$pathway = $app->getPathway();
+			$pathway->addItem($title, JRoute::_( "index.php?view=project&id=".$id ));
+	
+			//Set Browser Title
+			$this->document->setTitle($title);
+	
+			//Set Browser Meta Description
+			$this->document->setDescription($metadesc);
+	
+			//Set Browser Meta Keywords
+			$this->document->setMetadata('keywords', $metakey);
+	
+			if ($params->get('robots')) 
+			{
+				$this->document->setMetadata('robots', $params->get('robots'));
+			}
+			return $this;
+		}
+
 }

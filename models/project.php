@@ -78,7 +78,6 @@ class RealEstateModelProject extends JModelItem
 		$db->setQuery($query);
 		$result = $db->loadAssoc();//loadRowList(); //loadRow();
 		//$result; //$result[2];
-		echo $query;
 		return $result;
 	}
 }
