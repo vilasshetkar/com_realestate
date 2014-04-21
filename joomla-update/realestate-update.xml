@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+   <update>
+      <name>Real Estate</name>
+      <description>This is Joomla Component where you can manage your properties.</description>
+      <element>com_realestate</element>
+      <type>component</type>
+      <version>1.2.0</version>
+ 
+      <infourl title="Real Estate Update Site">http://wtouch.in</infourl>
+      <downloads>
+         <downloadurl type="full" format="zip">http://wtouch.in/joomla-update/files/com_realestate-1.2.0-final.zip</downloadurl>
+      </downloads>
+      <tags>
+         <tag>some-tag</tag>
+      </tags>
+ 
+      <maintainer>Web Touch India Solutions</maintainer>
+      <maintainerurl>http://wtouch.in</maintainerurl>
+      <section>some-section</section>
+      <targetplatform name="joomla" version="3.0" />
+   </update>
+   <update>
+      <name>Real Estate</name>
+      <description>This is Joomla Component where you can manage your properties.</description>
+      <element>com_realestate</element>
+      <type>component</type>
+      <version>1.2.1</version>
+ 
+      <infourl title="Real Estate Update Site">http://wtouch.in</infourl>
+      <downloads>
+         <downloadurl type="full" format="zip">http://wtouch.in/joomla-update/files/com_realestate-1.2.0-final.zip</downloadurl>
+      </downloads>
+      <tags>
+         <tag>some-tag</tag>
+      </tags>
+ 
+      <maintainer>Web Touch India Solutions</maintainer>
+      <maintainerurl>http://wtouch.in</maintainerurl>
+      <section>some-section</section>
+      <targetplatform name="joomla" version="3.0" />
+   </update>
+
+</updates>
