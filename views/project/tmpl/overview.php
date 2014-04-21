@@ -13,10 +13,22 @@ $document->addScriptDeclaration('
     });
 ');
 ?>
-
 <div class="row-fluid">
-           <h3>Overview:</h3>
+           <h2>Overview:</h2>
+<hr>
 </div>
+<div class="row-fluid">
+<div class="span4">
+  <ul class="nav menu proj_nav">
+      <li class="item-134"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=overview&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Overview</a></li>
+      <li class="item-136"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=area-statement&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Area Statement</a></li>
+      <li class="item-137"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=floor-plan&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Floor Plan</a></li>
+      <li class="item-135"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=amenities-specification&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Amenities Specification</a></li>
+      <li class="item-138"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=location-layout&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Layout &amp; Location Map</a></li>
+      <li class="item-139"><a href="index.php?option=com_realestate&amp;view=project&amp;layout=walk-through&amp;id=<?php echo $this->property["id"]; ?>&amp;project=<?php echo $this->property["title"]; ?>">Walk Through</a></li>
+    </ul>
+</div>
+<div class="span8">
 <div class="row-fluid">
       <div class="span3">
       <?php if($this->property['proj_img']!=""){ ?>
@@ -47,5 +59,7 @@ $document->addScriptDeclaration('
            <h3>Description:</h3>
            <div class="detail"><?php echo $this->property['overview']?></div>
        </div>
+</div>
+</div>
 
 <hr>

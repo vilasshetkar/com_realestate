@@ -7,8 +7,13 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>vilasshetkar@gmail.com</authorEmail>
 	<authorUrl>http://www.wtouch.in</authorUrl>
-	<version>1.2.0</version>
+	<version>1.2.2</version>
 	<description>This is Joomla Component where you can manage your properties.</description>
+
+        <update> <!-- Runs on update; New in 2.5 -->
+
+        </update>
+
 	<files>
 		<filename component="com_realestate">realestate.php</filename>
 		<filename>realestate.xml</filename>
@@ -26,5 +31,12 @@
 	    	<filename component="com_realestate">realestate.php</filename>
 	    </files>
 	</administration>
+
+        <!-- UPDATESERVER DEFINITION -->
+        <updateservers>
+                <!-- Note: No spaces or linebreaks allowed between the server tags -->
+                <server type="extension" priority="1" name="Real Estate Management Update">http://wtouch.in/joomla-update/realestate-update.xml</server>
+        </updateservers>
+
 
 </extension>

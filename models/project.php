@@ -74,10 +74,17 @@ class RealEstateModelProject extends JModelItem
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 
-		$query = "SELECT * From `2_real_project` WHERE status='1' AND featured= '1' AND `title` = '$projName' ";
+		$query = "SELECT * From `2_real_project` WHERE status='1' AND featured= '1' AND `title` LIKE '%$projName%' ";
 		$db->setQuery($query);
 		$result = $db->loadAssoc();//loadRowList(); //loadRow();
 		//$result; //$result[2];
+
+			 if (empty($result))
+			 {
+				 JError::raiseError(400, "There is no project Found!");
+				 return false;
+			 }
+
 		return $result;
 	}
 }
