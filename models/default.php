@@ -19,7 +19,7 @@ class RealEstateModelDefault extends JModelItem
  
                 $option = array(); //prevent problems
  
-				$option['driver']   = 'mysql';            // Database driver name
+				$option['driver']   = 'mysqli';            // Database driver name
 				$option['host']     = 'localhost';    // Database host name 169.254.182.25
 				$option['user']     = 'yogesh';       // User for database authentication
 				$option['password'] = 'root';   // Password for database authentication
@@ -161,8 +161,27 @@ class RealEstateModelDefault extends JModelItem
 		if ( $send !== true ) {
 			echo 'Error sending email: ' . $send->getMessage();
 		} else {
+		$db = $this->getDbo();
+
+		$query = $db->getQuery(true);
+
+		// Insert columns.
+		$columns = array('first_name', 'last_name', 'company', 'address', 'email', 'phone', 'subject', 'message', 'respo_for', 'domain');
+		 
+		// Insert values.
+		$values = array($db->quote($_POST['first_name']), $db->quote($_POST['last_name']), $db->quote($_POST['company']), $db->quote($_POST['address']), $db->quote($_POST['email']), $db->quote($_POST['phone']), $db->quote("Website Enquiry From: ".$_SERVER['SERVER_NAME']), $db->quote($body), $db->quote($_POST['respo_for']), $db->quote($_SERVER['HTTP_HOST']));
+		 
+		// Prepare the insert query.
+		$query
+			->insert($db->quoteName('2_real_response'))
+			->columns($db->quoteName($columns))
+			->values(implode(',', $values));
+
+			$db->setQuery($query);
+			$db->query();
+
 			$result = JFactory::getApplication()->enqueueMessage('Mail Sent Successfully');
-			echo $body;
+
 
 			$thank = " ";
 		}
