@@ -15,8 +15,12 @@
     </files>
     <config>
 	<fields name="params">
-        <fieldset name="home_project_setting" label="Home Project Setting">
-
+        <fieldset addfieldpath="/components/com_realestate/models/fields" name="home_project_setting" label="Home Project Setting">
+			
+			<field name="title" type="City" label="JGLOBAL_TITLE"
+		        description="JFIELD_TITLE_DESC"
+		        required="true" />
+			
             <field name="home_project" type="text" default=""
                 label="Project Name" />
 

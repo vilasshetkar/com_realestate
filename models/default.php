@@ -98,12 +98,14 @@ class RealEstateModelDefault extends JModelItem
 			$property_for = "`property_for` LIKE '%".mysql_real_escape_string($_POST['property_for'])."%'";
 			$city = "`city` LIKE '%".mysql_real_escape_string($_POST['city'])."%'";
 			$price = "`price` LIKE '%".mysql_real_escape_string($_POST['price'])."%'";
+			$soc_name = JRequest::getVar('society_name');
+			$project = "`society_name` LIKE '%".mysql_real_escape_string($soc_name)."%'";
 		//}
 		
 		
 		//$query = "SELECT * FROM `users` WHERE ($description) OR ($name)";
 
-		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type)  AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'" ;
+		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type) AND $project AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'" ;
 
 		$db->setQuery($query);
 

@@ -18,7 +18,6 @@ $document->addScriptDeclaration('
 
  
  
-<form action="<?php echo JRoute::_('index.php?option=com_realestate'); ?>" method="post">
 <h2>Search Result</h2>
 <table>
 <thead>
@@ -78,5 +77,4 @@ $refer = JRoute::_( "index.php?view=Default&layout=ReferFriend&id=".$item->greet
 <?php endforeach; ?>
 </tbody>
 </table>
-</form>
 

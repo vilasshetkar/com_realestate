@@ -48,11 +48,11 @@ class RealEstateViewDefault extends JViewLegacy
 			//$srch = $_POST['search'];
 			//echo $srch[1];
 			//$this->searchResult = $model->searchQuery();
-			if(!isset($_POST['searchProp'])){
+			/*if((!isset($_POST['searchProp'])) || (!isset($_GET['society_name']))){
 			//$this->setLayout('default');
 				$mainframe = JFactory::getApplication();
 				$mainframe->redirect('index.php?option=com_realestate&view=default');
-			}
+			}*/
 			
 			$result = $model->searchQuery();
 	
