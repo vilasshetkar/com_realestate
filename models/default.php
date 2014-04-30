@@ -86,19 +86,17 @@ class RealEstateModelDefault extends JModelItem
 		$db = $this->getDbo();
 
 		$query = $db->getQuery(true);
-		
 
-		//$searchArray = $search;//explode(" ", $search);
+			$type = JRequest::getVar('type');
+			$property_for = JRequest::getVar('property_for');
+			$city = JRequest::getVar('city');
+			$price = JRequest::getVar('price');
+			$soc_name = JRequest::getVar('project');
 
-		//$description = "";
-		//$name = "";
-		//foreach($searchArray AS $s)
-		//{
-			$type = "`category` LIKE '%".mysql_real_escape_string($_POST['type'])."%'";
-			$property_for = "`property_for` LIKE '%".mysql_real_escape_string($_POST['property_for'])."%'";
-			$city = "`city` LIKE '%".mysql_real_escape_string($_POST['city'])."%'";
-			$price = "`price` LIKE '%".mysql_real_escape_string($_POST['price'])."%'";
-			$soc_name = JRequest::getVar('society_name');
+			$type = "`category` LIKE '%".mysql_real_escape_string($type)."%'";
+			$property_for = "`property_for` LIKE '%".mysql_real_escape_string($property_for)."%'";
+			$city = "`city` LIKE '%".mysql_real_escape_string($city)."%'";
+			$price = "`price` LIKE '%".mysql_real_escape_string($price)."%'";
 			$project = "`society_name` LIKE '%".mysql_real_escape_string($soc_name)."%'";
 		//}
 		

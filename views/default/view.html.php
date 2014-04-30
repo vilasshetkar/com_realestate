@@ -108,7 +108,7 @@ class RealEstateViewDefault extends JViewLegacy
 				$title = $email;
 			}else{
 	
-			$title = $this->property[0]['title'];
+			$title = $this->property[0]['browsertitle'];
 			}
 			$metakey = $this->property[0]['meta_key'];
 			$metadesc = $this->property[0]['meta_desc'];
@@ -217,7 +217,7 @@ class RealEstateViewDefault extends JViewLegacy
 				echo $model->sendMail($id);
 			}else{
 	
-			$title = "Refer Your Friend: ".$this->property[0]['title'];
+			$title = "Refer Your Friend: ".$this->property[0]['browsertitle'];
 			}
 			$metakey = $this->property[0]['meta_key'];
 			$metadesc = $this->property[0]['meta_desc'];

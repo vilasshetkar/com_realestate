@@ -5,10 +5,6 @@
 defined('_JEXEC') or die;
 
 
-JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.min.js');
-JHtml::script(Juri::base() . 'components/com_realestate/js/jquery.bxSlider.min.js');
-JHtml::stylesheet(Juri::base() . 'components/com_realestate/css/prop-view.css');
-
 $document = JFactory::getDocument();
 
 

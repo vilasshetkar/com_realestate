@@ -18,7 +18,7 @@ JModelLegacy::addIncludePath(JPATH_SITE.'/components/com_realestate/models', 'Re
 $document = JFactory::getDocument();
 
 
-class modHomeProjectHelper
+class modProjectvSliderHelper
 {
     /**
      * Retrieves the hello message
@@ -30,7 +30,7 @@ class modHomeProjectHelper
     {
 		// Get an instance of the generic articles model
 		$model = JModelLegacy::getInstance('Project', 'RealEstateModel');
-		$result = $model->HomeProject($params->get("home_project"));
+		$result = $model->projectVSlider($params->get("home_project"));
 		
         return $result;
     }

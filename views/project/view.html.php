@@ -86,11 +86,11 @@ class RealEstateViewProject extends JViewLegacy
 				$title = $email;
 			}else{
 	
-			$title = $this->property[0]['title'];
+			$title = $this->property[0]['browsertitle'];
 			}
-			$metakey = $this->property[0]['title'];
-			$metadesc = $this->property[0]['title'];
-			
+			$metakey = $this->property[0]['metakey'];
+			$metadesc = $this->property[0]['metadesc'];
+
 			//for breadcrumb  -> Pathway
 			$pathway = $app->getPathway();
 			$pathway->addItem($title, JRoute::_( "index.php?view=project&id=".$id ));
@@ -125,9 +125,9 @@ class RealEstateViewProject extends JViewLegacy
 	
 			$this->property = $property;
 	
-			$title = $this->property['title'];
-			$metakey = $this->property['title'];
-			$metadesc = $this->property['title'];
+			$title = $this->property[0]['browsertitle'];
+			$metakey = $this->property[0]['metakey'];
+			$metadesc = $this->property[0]['metadesc'];
 			
 			//for breadcrumb  -> Pathway
 			$pathway = $app->getPathway();

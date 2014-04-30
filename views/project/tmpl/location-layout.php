@@ -4,14 +4,6 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.modal');
 $document = JFactory::getDocument();
  
-// Add Javascript directly here
-$document->addScriptDeclaration('
-    $(document).ready(function(){
-		$("a").click(function(){
-			//alert("An inline JavaScript Declaration");
-		});
-    });
-');
 ?>
 
 <div class="row-fluid">
