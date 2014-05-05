@@ -37,9 +37,16 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
 
 	if(JRequest::getVar('propTitle')){
 		$propLink = JRoute::_( $_SERVER['SERVER_NAME']."/index.php?option=com_realestate&view=Default&layout=singleproperty&id=".JRequest::getVar('id')  );
+		$respoFor = "property";
 		$propTitle = JRequest::getVar('propTitle');
+		
+	}elseif(JRequest::getVar('projTitle')){
+		$propLink = JRoute::_( $_SERVER['SERVER_NAME']."/index.php?option=com_realestate&view=project&layout=singleproject&id=".JRequest::getVar('id')  );
+		$respoFor = "project";
+		$propTitle = JRequest::getVar('projTitle');
 	}else{
 		$propLink = $_SERVER['SERVER_NAME'];
+		$respoFor = "web";
 		$propTitle = "Website";
 	
 	}
@@ -89,7 +96,8 @@ var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "none
         Characters left <span id="countsprytextarea1"></span><span class="textareaMaxCharsMsg">Exceeded maximum number of characters.</span></span> </div>
     </div>
     <div class="controls">
-      <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $propLink; ?>" />
+      <input name="respoLink" type="hidden" id="respoLink" value="<?php echo $propLink; ?>" />
+      <input name="respo_for" type="hidden" id="respo_for" value="<?php echo $respoFor; ?>" />
       <input name="prop_title" type="hidden" id="prop_title" value="<?php echo $propTitle ; ?>" />
 
       <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Send Enquiry" />

@@ -10,11 +10,6 @@ $document = JFactory::getDocument();
 
 JHTML::_('behavior.modal');
 // Add Javascript directly here
-$document->addScriptDeclaration('
-    $(document).ready(function(){
-
-    });
-');
 
 ?>
  
@@ -23,7 +18,7 @@ $prms = $this->params;
 $catShow = $prms->get('propCategory');
 	if($catShow == 1){
 		foreach($this->category as $i => $item):
-		$propCategory = JRoute::_( "index.php?view=Default&layout=default&category=".$item['category'] ); 
+		$propCategory = JRoute::_( "index.php?view=default&layout=default&category=".$item['category'] ); 
 		
 		?>
 		<a class="btn btn-primary" href="<?php echo $propCategory ?>" title=""><?php echo $item['category']; ?></a><div class="divider-vertical pull-left"></div>
@@ -33,7 +28,7 @@ $catShow = $prms->get('propCategory');
 
 <?php foreach($this->items as $i => $item): ?>
 <?php 
-$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id'] ); 
+$link = JRoute::_( "index.php?option=com_realestate&view=default&layout=singleproperty&id=".$item->greeting['id'] ); 
 $linkModal = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id']); 
 $email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title'] );
 $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']  );

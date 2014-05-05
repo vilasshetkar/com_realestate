@@ -16,13 +16,6 @@ JHtml::_('behavior.modal');
 
 $document = JFactory::getDocument();
  
-// Add Javascript directly here
-$document->addScriptDeclaration('
-
-    $(document).ready(function(){
-
-    });
-');
 ?>
 
 
@@ -32,7 +25,7 @@ $document->addScriptDeclaration('
 <?php 
 $linkModal = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
 $link = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
-$email = JRoute::_( "index.php?view=Default&layout=email&id=".$item->greeting['id']  );
+$email = JRoute::_( "index.php?view=Default&layout=email&id=".$item->greeting['id']."&projTitle=".$item->greeting['title']);
 $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']  );
 $ViewAll = JRoute::_( "index.php?option=com_realestate&view=project"); 
 ?>

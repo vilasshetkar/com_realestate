@@ -1,25 +1,19 @@
 <?php
 // no direct access
 defined('_JEXEC') or die;
+JHtml::_('behavior.modal');
+
 $document = JFactory::getDocument();
  
 // Add Javascript directly here
-$document->addScriptDeclaration('
-    $(document).ready(function(){
-		$("a").click(function(){
-			//alert("An inline JavaScript Declaration");
-		});
-    });
-');
 
 
 
 ?>
 <?php foreach($this->property as $i => $row): ?>
 <?php 
-$id = ($row['id'])-1;
-$link = JRoute::_( "index.php?view=prop&id=".$id );
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$row['id']."&propTitle=".$row['title']);
+
+$email = JRoute::_( "index.php?option=com_realestate&view=default&layout=email&id=".$row['id']."&propTitle=".$row['title']);
  ?>
 
   <h3><?php echo $row['title']?> </h3>

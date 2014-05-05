@@ -7,11 +7,7 @@ $document = JFactory::getDocument();
 ?>
 <?php 
 // Add Javascript directly here
-$document->addScriptDeclaration('
-$(document).ready(function(){
 
-});
-');
 ?>
 <?php foreach($this->property as $i => $row): ?>
   <div class="modal-header">

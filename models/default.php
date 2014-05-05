@@ -21,9 +21,9 @@ class RealEstateModelDefault extends JModelItem
  
 				$option['driver']   = 'mysql';            // Database driver name
 				$option['host']     = 'localhost';    // Database host name
-				$option['user']     = 'g150112s_real';       // User for database authentication
-				$option['password'] = 'real@1900';   // Password for database authentication
-				$option['database'] = 'g150112s_test';      // Database name
+				$option['user']     = 'yogesh';       // User for database authentication
+				$option['password'] = 'root';   // Password for database authentication
+				$option['database'] = 'prop';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
@@ -103,7 +103,7 @@ class RealEstateModelDefault extends JModelItem
 		
 		//$query = "SELECT * FROM `users` WHERE ($description) OR ($name)";
 
-		$query = "SELECT * From `2_real_property` WHERE ($property_for) AND ($city) AND ($price) AND ($type) AND $project AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'" ;
+		$query = "SELECT * From `2_real_property` WHERE status='1' AND ($property_for) AND ($city) AND ($price) AND ($type) AND $project AND other_domain LIKE '%$_SERVER[HTTP_HOST]%'" ;
 
 		$db->setQuery($query);
 
@@ -129,7 +129,7 @@ class RealEstateModelDefault extends JModelItem
 		$mailer->setSender($sender);
 		
 		// Recipient
-		$recipient = 'vilasshetkar@gmail.com' ;
+		$recipient = 'jaidevlandmarks@gmail.com' ;
 		//$recipient = $config->get( 'config.mailfrom' ) ;
 		//$recipient = array( 'person1@domain.com', 'person2@domain.com', 'person3@domain.com' );
 		$mailer->addRecipient($recipient);
@@ -138,7 +138,7 @@ class RealEstateModelDefault extends JModelItem
 		$mailer->setSubject("Website Enquiry From: ".$_SERVER['SERVER_NAME']);
 
 		// Message Body
-		$propLink = "http://".JRequest::getVar('respo_for');
+		$propLink = "http://".JRequest::getVar('respoLink');
 		$propTitle = JRequest::getVar('prop_title');
 
 		$body   = "<p><small>This is system generated mail:</small> </p>

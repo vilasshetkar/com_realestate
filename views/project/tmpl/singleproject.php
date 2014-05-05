@@ -11,7 +11,7 @@ $document = JFactory::getDocument();
 <?php foreach($this->property as $i => $row): ?>
 <?php 
 $id = ($row['id'])-1;
-$email = JRoute::_( "index.php?view=default&layout=email&id=".$row['id']."&propTitle=".$row['title']);
+$email = JRoute::_( "index.php?view=default&layout=email&id=".$row['id']."&projTitle=".$row['title']);
 ?>
 
 <h2> <?php echo $row['title']?></h2>

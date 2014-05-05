@@ -13,10 +13,10 @@ $document = JFactory::getDocument();
 
 <?php foreach($this->items as $i => $item): ?>
 <?php 
-$link = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id'] ); 
-$linkModal = JRoute::_( "index.php?view=Default&layout=SingleProperty&id=".$item->greeting['id']); 
-$email = JRoute::_( "index.php?view=Default&layout=Email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title'] );
-$refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->greeting['id']  );
+$link = JRoute::_( "index.php?option=com_realestate&view=default&layout=singleproperty&id=".$item->greeting['id'] ); 
+$linkModal = JRoute::_( "index.php?option=com_realestate&view=sefault&layout=singleproperty&id=".$item->greeting['id']); 
+$email = JRoute::_( "index.php?view=default&layout=email&id=".$item->greeting['id']."&propTitle=".$item->greeting['title'] );
+$refer = JRoute::_( "index.php?view=default&layout=prop-contact&id=".$item->greeting['id']  );
 ?>
 
 
