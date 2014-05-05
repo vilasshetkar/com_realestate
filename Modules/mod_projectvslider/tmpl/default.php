@@ -38,7 +38,8 @@ $link = JRoute::_( "index.php?option=com_realestate&view=project&layout=singlepr
 ?>
   <li><a href="<?php echo $link; ?>">
   	<img src="<?php echo $hello["proj_img"]; ?>" alt="" >
-    <span class="proj-title"><?php echo $hello["title"]; ?></span>
+    <span class="proj-title"><?php echo $hello["title"]; ?>
+    <small><?php echo $hello["type"]; ?></small></span>
   </a>
   </li>
 

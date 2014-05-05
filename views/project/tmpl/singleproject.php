@@ -15,8 +15,6 @@ $email = JRoute::_( "index.php?view=default&layout=email&id=".$row['id']."&propT
 ?>
 
 <h2> <?php echo $row['title']?></h2>
-<div class="pull-right">
-<a class="btn btn-primary" href="<?php echo $email ; ?>" title="Send Enquiry"><i class="icon-envelope"> </i> Send Enquiry</a></div>
 
 
 <ul class="nav nav-tabs">

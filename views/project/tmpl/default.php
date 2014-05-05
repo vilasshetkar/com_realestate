@@ -69,8 +69,13 @@ $ViewAll = JRoute::_( "index.php?option=com_realestate&view=project");
     <a href="<?php echo $link ; ?>" >More Details</a> <strong>›</strong>
     </div>
 </div>
+
+<hr />
 <?php endforeach; ?>
 <div class="clearfix"></div>
+<div class="pagination">
+<?php echo $this->pagination->getListFooter(); ?>
+</div>
 
 </div>
  

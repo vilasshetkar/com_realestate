@@ -95,45 +95,61 @@ Vertical scroller example, with custom base class */
 
 /* Container DIV */
 .simply-scroll{ 
-	width: 100%; /* wider than clip for custom button pos. */
-	height: 400px;
+	width: 200px; /* wider than clip for custom button pos. */
+	height: 600px;
 	margin-bottom: 1.5em;
+	border: 1px solid #20003D;
+	padding: 10px 0;
 }
 
 /* Clip DIV */
 .simply-scroll .simply-scroll-clip {
 	width: 100%;
-	height: 400px;
+	height: 600px;
 }
 
 /* Explicitly set height/width of each list item */
 .simply-scroll .simply-scroll-list li {
 	width: 100%;
-	height: 205px;
+	height: 221px;
 	position:relative;
 }
 .simply-scroll .simply-scroll-list li a{
 	display:block;
+	height: 210px;
 	text-align:center;
+	margin: 10px;
+	border: 1px solid #20003D;
+	/* border-radius: 5px; */
+	overflow: hidden;
+	/* box-shadow: 5px 5px 10px -5px #000; */
 }
 .simply-scroll .simply-scroll-list li img{
-	height: 200px;
-	width: 200px;
+	height: 140px;
+	min-height: 140px;
+	max-height: 180px;
+	width: auto;
+	min-width: 100%;
+	/* border-radius: 5px 5px 0px 0px; */
 }
 .proj-title{
 	position:absolute;
-	display:block;
-	background-color:#000;
-	bottom:5px;
-	left:0;
-	right:0;
-	line-height: 200%;
-	opacity: 0.5;
+	display: block;
+	/* background-color: #20003D; */
+	bottom: 0px;
+	left: 10px;
+	vertical-align: middle;
+	right: 10px;
+	padding: 5px;
+	height: 60px;
+	/* opacity: 0.7; */
 	transition:all ease 500ms;
 	-moz-transition:all ease 500ms;
 	-ms-transition:all ease 500ms;
 	-webkit-transition:all ease 500ms;
 	-o-transition:all ease 500ms;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 .simply-scroll .simply-scroll-list li:hover .proj-title{
 	opacity:1.0;
@@ -144,6 +160,10 @@ Vertical scroller example, with custom base class */
 	-o-transition:all ease 500ms;
 }
 a .proj-title{
-	color:#FFF;
+	color: #20003D;
 	text-decoration:none;
+}
+.proj-title small{
+	display:block;
+	font-size:80%
 }

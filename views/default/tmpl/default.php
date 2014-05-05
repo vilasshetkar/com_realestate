@@ -104,8 +104,8 @@ $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->gree
             </div>
         </div>
         </div>
-        </div>
         <hr>
+        </div>
 
 <?php endforeach; ?>
 <div class="pagination">

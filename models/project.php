@@ -27,16 +27,16 @@ class RealEstateModelProject extends JModelItem
                 $option = array(); //prevent problems
  
 				$option['driver']   = 'mysql';            // Database driver name
-				$option['host']     = 'localhost';    // Database host name 169.254.182.25
-				$option['user']     = 'yogesh';       // User for database authentication
-				$option['password'] = 'root';   // Password for database authentication
-				$option['database'] = 'prop';      // Database name
+				$option['host']     = 'localhost';    // Database host name
+				$option['user']     = 'g150112s_real';       // User for database authentication
+				$option['password'] = 'real@1900';   // Password for database authentication
+				$option['database'] = 'g150112s_test';      // Database name
 				$option['prefix']   = '';             // Database prefix (may be empty)
  
                 $db = JDatabase::getInstance( $option );
 				
 				 // Set the pagination request variables
-				 JRequest::setVar('limit', JRequest::getVar('limit', 5, '', 'int'));
+				 JRequest::setVar('limit', JRequest::getVar('limit', 15, '', 'int'));
 				 JRequest::setVar('limitstart', JRequest::getVar('limitstart', 0, '', 'int'));
 				
                 parent::setDbo($db);

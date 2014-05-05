@@ -5,12 +5,11 @@
     <version>0.0.1</version>
     <description>Project Vertical Slider! module.</description>
     <files>
-        <filename>mod_homeproject.xml</filename>
-        <filename module="mod_featuredproj">mod_homeproject.php</filename>
+        <filename>mod_projectvslider.xml</filename>
+        <filename module="mod_projectvslider">mod_projectvslider.php</filename>
         <filename>index.html</filename>
         <filename>helper.php</filename>
         <filename>tmpl/default.php</filename>
-        <filename>tmpl/list.php</filename>
         <filename>tmpl/index.html</filename>
     </files>
     <config>
