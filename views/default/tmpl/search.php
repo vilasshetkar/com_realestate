@@ -9,8 +9,11 @@ $document = JFactory::getDocument();
  
  
 <h2>Search Result</h2>
-
-
+<hr>
+<div class="pagination">
+<?php echo $this->pagination->getListFooter(); ?>
+</div>
+<hr>
 <?php foreach($this->items as $i => $item): ?>
 <?php 
 $link = JRoute::_( "index.php?option=com_realestate&view=default&layout=singleproperty&id=".$item->greeting['id'] ); 

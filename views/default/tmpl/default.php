@@ -26,6 +26,9 @@ $catShow = $prms->get('propCategory');
 	<?php } ?>
 
 
+<div class="pagination">
+<?php echo $this->pagination->getListFooter(); ?>
+</div>
 <?php foreach($this->items as $i => $item): ?>
 <?php 
 $link = JRoute::_( "index.php?option=com_realestate&view=default&layout=singleproperty&id=".$item->greeting['id'] ); 
@@ -98,8 +101,8 @@ $refer = JRoute::_( "index.php?view=Default&layout=prop-contact&id=".$item->gree
                 </div>
             </div>
         </div>
-        </div>
         <hr>
+        </div>
         </div>
 
 <?php endforeach; ?>
