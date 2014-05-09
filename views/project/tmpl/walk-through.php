@@ -4,6 +4,14 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.modal');
 $document = JFactory::getDocument();
  
+	//Set Browser Title
+	$this->document->setTitle("Walk Through : ".$this->property['browsertitle']);
+	
+	//Set Browser Meta Description
+	$this->document->setDescription($this->property['metadesc']);
+	
+	//Set Browser Meta Keywords
+	$this->document->setMetadata('keywords', $this->property['metakey']);
 
 ?>
 
@@ -12,7 +20,7 @@ $document = JFactory::getDocument();
 </div>
 <div class="row-fluid">
       <div class="span12">
-      <?php echo $this->property['title']?>
+      <?php echo $this->property['availability']?>
       </div>
 </div>
        <hr />

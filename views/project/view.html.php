@@ -117,6 +117,7 @@ class RealEstateViewProject extends JViewLegacy
 		$menus	= $app->getMenu();
 		$menu	= $menus->getActive();
 		$model = $this->getModel();
+		
 	 			//Get property id from url parameter like $_GET
 			$id = JRequest::getVar('project');
 	
@@ -125,27 +126,12 @@ class RealEstateViewProject extends JViewLegacy
 	
 			$this->property = $property;
 	
-			$title = $this->property[0]['browsertitle'];
-			$metakey = $this->property[0]['metakey'];
-			$metadesc = $this->property[0]['metadesc'];
-			
+		
 			//for breadcrumb  -> Pathway
 			$pathway = $app->getPathway();
-			$pathway->addItem($title, JRoute::_( "index.php?view=project&id=".$id ));
+			$pathway->addItem($this->property['title'], JRoute::_( "index.php?view=project&id=".$id ));
 	
-			//Set Browser Title
-			$this->document->setTitle($title);
 	
-			//Set Browser Meta Description
-			$this->document->setDescription($metadesc);
-	
-			//Set Browser Meta Keywords
-			$this->document->setMetadata('keywords', $metakey);
-	
-			if ($params->get('robots')) 
-			{
-				$this->document->setMetadata('robots', $params->get('robots'));
-			}
 			return $this;
 		}
 
