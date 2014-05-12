@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="install">
+    <name>Website Enquiry!</name>
+    <author>Vilas Shetkar</author>
+    <version>1.0.0</version>
+    <description>Website Enquiry! module.</description>
+
+    <files>
+        <filename>mod_webenquiry.xml</filename>
+        <filename module="mod_webenquiry">mod_webenquiry.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+	
+	<media folder="media" destination="mod_webenquiry">
+		<folder>css</folder>
+        <folder>js</folder>
+	</media>
+
+<config>
+	<fields name="params">
+        <fieldset name="webenquiry" label="Web Enquiry Config">
+			
+            <field name="email" type="text" default=""
+                label="Email"
+				required="true" />
+
+        </fieldset>
+    </fields>
+</config>
+<updateservers>
+	<server type="extension" name="WebEnquiry" priority="1">http://www.wtouch.in/joomla-update/webenquiry.xml</server>
+</updateservers>
+</extension>

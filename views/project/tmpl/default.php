@@ -17,12 +17,14 @@ JHtml::_('behavior.modal');
 $document = JFactory::getDocument();
  
 ?>
-
+<div class="row-fluid featured_project">
+<h2>Projects</h2>
+<hr style="display:block" />
+</div>
 
 <div class="row-fluid featured_project">
-
-		 <?php foreach($this->items as $i => $item): ?>
-<?php 
+<?php foreach($this->items as $i => $item): ?>
+<?php
 $linkModal = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
 $link = JRoute::_( "index.php?view=project&layout=singleproject&id=".$item->greeting['id']); 
 $email = JRoute::_( "index.php?view=Default&layout=email&id=".$item->greeting['id']."&projTitle=".$item->greeting['title']);

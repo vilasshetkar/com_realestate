@@ -142,7 +142,7 @@ class RealEstateModelDefault extends JModelItem
 		$propTitle = JRequest::getVar('prop_title');
 
 		$body   = "<p><small>This is system generated mail:</small> </p>
-			<div><p><strong>Enquiry For</strong>: <a href='$propLink' title='$propTitle'>$propTitle</a> </p>
+			<div><p><strong>Enquiry For</strong>: <a target='new' href='$propLink' title='$propTitle'>$propTitle</a> </p>
 			<p><strong>From :</strong> $_POST[email]</p>
 			<p><strong>Full Name :</strong> $_POST[first_name]"." "."$_POST[last_name] </p>
 			<p><strong>Company :</strong> $_POST[company] </p>

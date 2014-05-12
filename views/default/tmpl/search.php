@@ -5,11 +5,13 @@ defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
  
-?>
- 
- 
-<h2>Search Result</h2>
+if(empty($this->items)){
+?>	
+<h2>No Properties available!</h2>
 <hr>
+<?php } else { ?>
+<h2>Search Result</h2>
+
 <div class="pagination">
 <?php echo $this->pagination->getListFooter(); ?>
 </div>
@@ -95,4 +97,5 @@ $refer = JRoute::_( "index.php?view=default&layout=prop-contact&id=".$item->gree
 <?php echo $this->pagination->getListFooter(); ?>
 </div>
 
+<?php }?>
 

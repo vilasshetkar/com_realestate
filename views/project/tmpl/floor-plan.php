@@ -5,7 +5,7 @@ JHtml::_('behavior.modal');
 $document = JFactory::getDocument();
 
 	//Set Browser Title
-	$this->document->setTitle("Floor Plan : ".$this->property['browsertitle']);
+	$this->document->setTitle("Floor Plan : ".$this->property['browsertitle_floorplan']);
 	
 	//Set Browser Meta Description
 	$this->document->setDescription($this->property['metadesc']);
